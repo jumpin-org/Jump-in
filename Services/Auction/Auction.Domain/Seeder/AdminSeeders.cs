@@ -29,14 +29,7 @@ namespace JumpIn.Auction.Domain.Seeders
             modelBuilder.Entity<Account>()
             .HasOne(x => x.User)
             .WithOne(x => x.Account)
-            .HasForeignKey<User>(x => x.AccountId)
-            .OnDelete(DeleteBehavior.Cascade)
-            .IsRequired();
-
-            modelBuilder.Entity<Account>()
-            .HasOne(x => x.FicaDetail)
-            .WithOne(x => x.Account)
-            .HasForeignKey<FicaDetail>(x => x.AccountId)
+            .HasForeignKey<Account>(x => x.UserId)
             .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
         }
@@ -51,7 +44,7 @@ namespace JumpIn.Auction.Domain.Seeders
             modelBuilder.Entity<Administrator>()
             .HasOne(x => x.User)
             .WithOne(x => x.Administrator)
-            .HasForeignKey<User>(x => x.AdministratorId)
+            .HasForeignKey<Administrator>(x => x.UserId)
             .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
         }
@@ -78,14 +71,9 @@ namespace JumpIn.Auction.Domain.Seeders
             }
 
             modelBuilder.Entity<FicaDetail>()
-            .Property(b => b.FicaStatusId)
-            .HasDefaultValue(FicaStatusEnum.New)
-            .ValueGeneratedNever();
-
-            modelBuilder.Entity<FicaDetail>()
             .HasOne(x => x.Account)
             .WithOne(x => x.FicaDetail)
-            .HasForeignKey<Account>(x => x.FicaDetailId)
+            .HasForeignKey<FicaDetail>(x => x.AccountId)
             .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
         }

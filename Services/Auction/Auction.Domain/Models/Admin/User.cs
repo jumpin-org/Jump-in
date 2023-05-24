@@ -31,11 +31,7 @@ namespace JumpIn.Auction.Domain.Models.Admin
         [Required]
         public string PhoneNumber { get; set; }
 
-        public int? AccountId { get; set; }
-
         public Account Account { get; set; }
-
-        public int? AdministratorId { get; set; }
 
         public Administrator Administrator { get; set; }
     }
