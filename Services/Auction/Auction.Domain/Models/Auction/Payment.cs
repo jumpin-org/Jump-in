@@ -5,8 +5,6 @@ namespace JumpIn.Auction.Domain.Models.Auction
 {
     public class Payment : BaseAuditableEntity
     {
-        private Bid bid;
-
         public int PaymentId { get; set; }
         public decimal Amount { get; set; }
         public DateTime PaymentTime { get; set; }
@@ -14,17 +12,8 @@ namespace JumpIn.Auction.Domain.Models.Auction
         [Required]
         public byte[] ProofOfPayment { get; set; }
 
-        public int BidId { get; private set; }
+        public int BidId { get; set; }
 
-        public Bid Bid
-        {
-            get => bid;
-
-            set
-            {
-                bid = value;
-                BidId = value is null ? throw new ArgumentNullException(nameof(Bid)) : value.BidId;
-            }
-        }
+        public Bid Bid { get; set; }
     }
 }

@@ -48,12 +48,6 @@ namespace JumpIn.Auction.Domain.Seeders
             }
 
             modelBuilder.Entity<DutchAuction>()
-            .HasOne(x => x.Product)
-            .WithOne(x => x.DutchAuction)
-            .HasForeignKey<Product>(x => x.ProductId)
-            .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<DutchAuction>()
             .HasOne(x => x.AuctionStatus)
             .WithMany(x => x.DutchAuctions)
             .HasForeignKey(x => x.AuctionStatusId)
@@ -82,7 +76,7 @@ namespace JumpIn.Auction.Domain.Seeders
             modelBuilder.Entity<Product>()
             .HasOne(x => x.DutchAuction)
             .WithOne(x => x.Product)
-            .HasForeignKey<DutchAuction>(x => x.DutchAuctionId)
+            .HasForeignKey<Product>(x => x.DutchAuctionId)
             .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
 
