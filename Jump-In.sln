@@ -9,13 +9,43 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{28DB85
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin", "Admin", "{734CDB11-73C0-4C8F-9C69-4166D172AB8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin.Domain", "Services\Admin\Admin.Domain\Admin.Domain\Admin.Domain.csproj", "{C888E715-4B4C-401C-8B33-0DD561B16ADC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Admin.Domain", "Services\Admin\Admin.Domain\JumpIn.Admin.Domain.csproj", "{C888E715-4B4C-401C-8B33-0DD561B16ADC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin.BusinessLogicLayer", "Services\Admin\Admin.BusinessLogicLayer\Admin.BusinessLogicLayer.csproj", "{663D8BD9-C0F5-46D2-A9D9-FA54DAFC8797}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Admin.BusinessLogicLayer", "Services\Admin\Admin.BusinessLogicLayer\JumpIn.Admin.BusinessLogicLayer.csproj", "{663D8BD9-C0F5-46D2-A9D9-FA54DAFC8797}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin.Test", "Services\Admin\Admin.Test\Admin.Test.csproj", "{C3AD80AF-F765-43AC-8FC5-8BEDD131FECC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Admin.Test", "Services\Admin\Admin.Test\JumpIn.Admin.Test.csproj", "{C3AD80AF-F765-43AC-8FC5-8BEDD131FECC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin.API", "Services\Admin\Admin.API\Admin.API.csproj", "{26D30DF4-FB25-490A-9E8C-7D6A124DD169}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Admin.API", "Services\Admin\Admin.API\JumpIn.Admin.API.csproj", "{26D30DF4-FB25-490A-9E8C-7D6A124DD169}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Common.Domain", "Common\JumpIn.Common.Domain\JumpIn.Common.Domain.csproj", "{E277113C-18DE-492F-BD34-77D4294872D8}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{994DF2C5-DA2E-4D1E-8B3B-56624B886623}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auction", "Auction", "{23A871D2-4E69-4D12-8465-66AA7F07B4B7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Auction.Test", "Services\Auction\Auction.Test\JumpIn.Auction.Test.csproj", "{4840DEB0-92D6-4C2A-93CE-B438CDE4EBB6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Auction.API", "Services\Auction\Auction.API\JumpIn.Auction.API.csproj", "{61ED9554-6031-47B1-9392-0651E0B9D7E5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Auction.Domain", "Services\Auction\Auction.Domain\JumpIn.Auction.Domain.csproj", "{E4037337-0F43-499C-9BDE-311EE0F61D3A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Auction.BusinessLogicLayer", "Services\Auction\Auction.BusinessLogicLayer\JumpIn.Auction.BusinessLogicLayer.csproj", "{BD8FFFD1-C3ED-46B4-A3F1-6D5055FAF42D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{296A7C95-CB14-4769-B835-B24A00972010}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{C5A302D8-28B9-470D-A6CB-DAA9F7BA5481}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Database", "Database\JumpIn.Database\JumpIn.Database.csproj", "{FBD8A9E3-4523-4F02-B9F4-F714F3DDFAB1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StartUp", "StartUp", "{5A1F9601-CFEE-4A23-A7F2-418F08C07342}"
+	ProjectSection(SolutionItems) = preProject
+		Database\StartUp\Dockerfile = Database\StartUp\Dockerfile
+		Database\StartUp\entrypoint.sh = Database\StartUp\entrypoint.sh
+		Database\StartUp\setup.sql = Database\StartUp\setup.sql
+		Database\StartUp\startupsqlcmd.sh = Database\StartUp\startupsqlcmd.sh
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JumpIn.Database.Migrations", "Database\JumpIn.Database.Migrations\JumpIn.Database.Migrations.csproj", "{F1098D5D-A095-4F68-B3E5-828CDB20B38B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +69,38 @@ Global
 		{26D30DF4-FB25-490A-9E8C-7D6A124DD169}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26D30DF4-FB25-490A-9E8C-7D6A124DD169}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26D30DF4-FB25-490A-9E8C-7D6A124DD169}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E277113C-18DE-492F-BD34-77D4294872D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E277113C-18DE-492F-BD34-77D4294872D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E277113C-18DE-492F-BD34-77D4294872D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E277113C-18DE-492F-BD34-77D4294872D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{994DF2C5-DA2E-4D1E-8B3B-56624B886623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{994DF2C5-DA2E-4D1E-8B3B-56624B886623}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{994DF2C5-DA2E-4D1E-8B3B-56624B886623}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{994DF2C5-DA2E-4D1E-8B3B-56624B886623}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4840DEB0-92D6-4C2A-93CE-B438CDE4EBB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4840DEB0-92D6-4C2A-93CE-B438CDE4EBB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4840DEB0-92D6-4C2A-93CE-B438CDE4EBB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4840DEB0-92D6-4C2A-93CE-B438CDE4EBB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61ED9554-6031-47B1-9392-0651E0B9D7E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61ED9554-6031-47B1-9392-0651E0B9D7E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61ED9554-6031-47B1-9392-0651E0B9D7E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61ED9554-6031-47B1-9392-0651E0B9D7E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4037337-0F43-499C-9BDE-311EE0F61D3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4037337-0F43-499C-9BDE-311EE0F61D3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4037337-0F43-499C-9BDE-311EE0F61D3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4037337-0F43-499C-9BDE-311EE0F61D3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD8FFFD1-C3ED-46B4-A3F1-6D5055FAF42D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD8FFFD1-C3ED-46B4-A3F1-6D5055FAF42D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD8FFFD1-C3ED-46B4-A3F1-6D5055FAF42D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD8FFFD1-C3ED-46B4-A3F1-6D5055FAF42D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBD8A9E3-4523-4F02-B9F4-F714F3DDFAB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBD8A9E3-4523-4F02-B9F4-F714F3DDFAB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBD8A9E3-4523-4F02-B9F4-F714F3DDFAB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBD8A9E3-4523-4F02-B9F4-F714F3DDFAB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1098D5D-A095-4F68-B3E5-828CDB20B38B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1098D5D-A095-4F68-B3E5-828CDB20B38B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1098D5D-A095-4F68-B3E5-828CDB20B38B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1098D5D-A095-4F68-B3E5-828CDB20B38B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +111,15 @@ Global
 		{663D8BD9-C0F5-46D2-A9D9-FA54DAFC8797} = {734CDB11-73C0-4C8F-9C69-4166D172AB8B}
 		{C3AD80AF-F765-43AC-8FC5-8BEDD131FECC} = {734CDB11-73C0-4C8F-9C69-4166D172AB8B}
 		{26D30DF4-FB25-490A-9E8C-7D6A124DD169} = {734CDB11-73C0-4C8F-9C69-4166D172AB8B}
+		{E277113C-18DE-492F-BD34-77D4294872D8} = {28DB8580-7E80-4CA6-A8B6-A53B0765D712}
+		{23A871D2-4E69-4D12-8465-66AA7F07B4B7} = {E35249BD-CD6B-4F0D-ABF4-145AB8EE4D36}
+		{4840DEB0-92D6-4C2A-93CE-B438CDE4EBB6} = {23A871D2-4E69-4D12-8465-66AA7F07B4B7}
+		{61ED9554-6031-47B1-9392-0651E0B9D7E5} = {23A871D2-4E69-4D12-8465-66AA7F07B4B7}
+		{E4037337-0F43-499C-9BDE-311EE0F61D3A} = {23A871D2-4E69-4D12-8465-66AA7F07B4B7}
+		{BD8FFFD1-C3ED-46B4-A3F1-6D5055FAF42D} = {23A871D2-4E69-4D12-8465-66AA7F07B4B7}
+		{FBD8A9E3-4523-4F02-B9F4-F714F3DDFAB1} = {C5A302D8-28B9-470D-A6CB-DAA9F7BA5481}
+		{5A1F9601-CFEE-4A23-A7F2-418F08C07342} = {C5A302D8-28B9-470D-A6CB-DAA9F7BA5481}
+		{F1098D5D-A095-4F68-B3E5-828CDB20B38B} = {C5A302D8-28B9-470D-A6CB-DAA9F7BA5481}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CEA0185C-5C19-4B68-9B19-0963F9EB17FE}

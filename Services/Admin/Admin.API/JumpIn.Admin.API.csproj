@@ -4,10 +4,10 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-Admin.API-543dd396-a9ab-42f0-b22c-cc15108a1c32</UserSecretsId>
+    <UserSecretsId>aspnet-JumpIn.Admin.API-543dd396-a9ab-42f0-b22c-cc15108a1c32</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
-	<DockerfileRunArguments>-v "C:\Users\sikelela.nkohla\.aspnet\https:/https"</DockerfileRunArguments>
+	<DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +17,10 @@
     <PackageReference Include="Microsoft.Identity.Web" Version="1.16.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Admin.Domain\JumpIn.Admin.Domain.csproj" />
   </ItemGroup>
 
 </Project>

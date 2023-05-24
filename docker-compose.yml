@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  admin-api:
+    image: ${DOCKER_REGISTRY-}admin-api
+    build:
+      context: .
+      dockerfile: Services/Admin/Admin.API/Dockerfile
+    depends_on:
+      - db
+  auction-api:
+    image: ${DOCKER_REGISTRY-}auction-api
+    build:
+      context: .
+      dockerfile: Services/Auction/Auction.API/Dockerfile
+    depends_on:
+      - db
+  db:
+    image: ${DOCKER_REGISTRY-}jumpin-db
+    build:
+        context: .
+        dockerfile: Database/StartUp/Dockerfile
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssqldata:/var/opt/mssql
+
+volumes:
+  mssqldata:
