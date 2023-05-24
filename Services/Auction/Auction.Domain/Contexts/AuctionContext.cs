@@ -3,21 +3,25 @@ using JumpIn.Auction.Domain.Contexts.MigrationExclusions;
 using JumpIn.Auction.Domain.Models.Admin;
 using JumpIn.Auction.Domain.Models.Auction;
 using JumpIn.Common.Domain.Constant;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Hosting.Internal;
+using Microsoft.Extensions.Logging;
 
 namespace JumpIn.Auction.Domain.Contexts
 {
     public class AuctionContext : BaseDbContext
     {
-        public AuctionContext(DbContextOptions<AuctionContext> options)
-            : base(options)
-        {
+        private readonly IConfiguration config;
+        private readonly IHostEnvironment env;
 
+        public AuctionContext(DbContextOptions<AuctionContext> options, IConfiguration config, IHostEnvironment env, IHttpContextAccessor httpContextAccessor = null)
+            : base(options, httpContextAccessor)
+        {
+            this.config = config;
+            this.env = env is null ? new HostingEnvironment() { ContentRootPath = Directory.GetCurrentDirectory() } : env;
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Account> Accounts { get; set; }
@@ -37,7 +41,15 @@ namespace JumpIn.Auction.Domain.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            base.OnConfiguring(optionsBuilder);
+            if (optionsBuilder is null)
+            {
+                throw new ArgumentNullException(nameof(optionsBuilder));
+            }
+
+            if (!optionsBuilder.IsConfigured)
+            {
+               optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionStrings__Default"), options => options.MigrationsAssembly(DB.MIGRATION_PROJECT_ASSEMBLY));
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

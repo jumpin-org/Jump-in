@@ -1,9 +1,6 @@
-﻿using Admin.Domain.Modles;
-using JumpIn.Auction.Domain.Models.Admin;
-using JumpIn.Common.Domain.Enums;
+﻿using JumpIn.Common.Domain.Enums;
 using JumpIn.Common.Domain.Helpers;
 using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
 
 namespace JumpIn.Auction.Domain.Models.Auction
 {

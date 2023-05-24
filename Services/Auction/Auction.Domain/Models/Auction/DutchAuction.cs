@@ -11,7 +11,7 @@ namespace JumpIn.Auction.Domain.Models.Auction
         private Seller seller;
         private Product product;
 
-        public int AuctionId { get; set; }
+        public int DutchAuctionId { get; set; }
 
         [Required]
         [StringLength(25, ErrorMessage = "The Title cannot exceed 25 characters.")]

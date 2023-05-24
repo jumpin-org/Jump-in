@@ -51,7 +51,7 @@ namespace JumpIn.Auction.Domain.Models.Auction
             set
             {
                 auction = value;
-                AuctionId = value is null ? throw new ArgumentNullException(nameof(Auction)) : value.AuctionId;
+                AuctionId = value is null ? throw new ArgumentNullException(nameof(Auction)) : value.DutchAuctionId;
             }
         }
     }
