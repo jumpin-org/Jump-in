@@ -1,4 +1,5 @@
 ﻿using JumpIn.Auction.Domain.Models.Admin;
+using JumpIn.Common.Domain.Enums;
 using JumpIn.Common.Domain.Model;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,7 +10,6 @@ namespace JumpIn.Auction.Domain.Models.Auction
     {
         private Administrator administrator;
         private Seller seller;
-        private Product product;
 
         public int DutchAuctionId { get; set; }
 
@@ -25,7 +25,7 @@ namespace JumpIn.Auction.Domain.Models.Auction
         public decimal CurrentPrice { get; set; }
         public decimal Decrement { get; set; }
         public DateTime EndTime { get; set; }
-        public int AuctionStatusId { get; set; }
+        public AuctionStatusEnum AuctionStatusId { get; set; }
         public AuctionStatus AuctionStatus { get; set; }
 
         public int AdministratorId { get; private set; }
@@ -54,18 +54,7 @@ namespace JumpIn.Auction.Domain.Models.Auction
             }
         }
 
-        public int ProductId { get; private set; }
-
-        public Product Product
-        {
-            get => product;
-
-            set
-            {
-                product = value;
-                ProductId = value is null ? throw new ArgumentNullException(nameof(Product)) : value.ProductId;
-            }
-        }
+        public Product? Product { get; set; }
 
         public ICollection<Bid> Bids { get; private set; }
 

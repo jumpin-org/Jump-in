@@ -20,5 +20,7 @@ namespace JumpIn.Auction.Domain.Models.Auction
                 AccountId = value is null ? throw new ArgumentNullException(nameof(Account)) : value.AccountId;
             }
         }
+
+        public ICollection<Bid> Bids { get; private set; }
     }
 }

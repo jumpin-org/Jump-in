@@ -1,4 +1,5 @@
-﻿using JumpIn.Common.Domain.Model;
+﻿using JumpIn.Auction.Domain.Models.Auction;
+using JumpIn.Common.Domain.Model;
 
 namespace JumpIn.Auction.Domain.Models.Admin
 {
@@ -34,5 +35,8 @@ namespace JumpIn.Auction.Domain.Models.Admin
                 FicaDetailId = value is null ? throw new ArgumentNullException(nameof(FicaDetail)) : value.FicaDetailId;
             }
         }
+
+        public ICollection<Seller> Sellers { get; private set; }
+        public ICollection<Bidder> Bidders { get; private set; }
     }
 }

@@ -8,12 +8,8 @@ namespace JumpIn.Auction.API.StartupUtils.DependencyResolvers
     {
         public static void AddDBContexts(this IServiceCollection services, string connectionString)
         {
-            services.AddDbContext<AuctionContext>(options => 
-                        options.UseSqlServer(connectionString,
-                        dbOptions => dbOptions.MigrationsAssembly(DB.MIGRATION_PROJECT_ASSEMBLY)))
-                    .AddDbContext<AdminContext>(options =>
-                        options.UseSqlServer(connectionString,
-                        dbOptions => dbOptions.MigrationsAssembly(DB.MIGRATION_PROJECT_ASSEMBLY)));
+            services.AddDbContext<AuctionContext>(options => options.UseSqlServer(connectionString))
+                    .AddDbContext<AdminContext>(options => options.UseSqlServer(connectionString));
         }
     }
 }

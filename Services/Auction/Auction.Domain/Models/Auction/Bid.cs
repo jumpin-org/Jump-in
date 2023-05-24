@@ -1,16 +1,17 @@
-﻿using JumpIn.Common.Domain.Model;
+﻿using JumpIn.Common.Domain.Enums;
+using JumpIn.Common.Domain.Model;
 
 namespace JumpIn.Auction.Domain.Models.Auction
 {
     public class Bid : BaseAuditableEntity
     {
-        private DutchAuction auction;
+        private DutchAuction dutchAuction;
         private Bidder bidder;
 
         public int BidId { get; set; }
         public decimal Amount { get; set; }
         public DateTime BidTime { get; set; }
-        public int BidStatusId { get; set; }
+        public BidStatusEnum BidStatusId { get; set; }
         public BidStatus BidStatus { get; set; }
 
         public int BidderId { get; private set; }
@@ -26,17 +27,19 @@ namespace JumpIn.Auction.Domain.Models.Auction
             }
         }
 
-        public int AuctionId { get; private set; }
+        public int DutchAuctionId { get; private set; }
 
-        public DutchAuction Auction
+        public DutchAuction DutchAuction
         {
-            get => auction;
+            get => dutchAuction;
 
             set
             {
-                auction = value;
-                AuctionId = value is null ? throw new ArgumentNullException(nameof(Auction)) : value.DutchAuctionId;
+                dutchAuction = value;
+                DutchAuctionId = value is null ? throw new ArgumentNullException(nameof(DutchAuction)) : value.DutchAuctionId;
             }
         }
+
+        public ICollection<Payment> Payments { get; private set; }
     }
 }

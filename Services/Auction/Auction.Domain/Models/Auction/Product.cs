@@ -5,7 +5,7 @@ namespace JumpIn.Auction.Domain.Models.Auction
 {
     public class Product : BaseAuditableEntity
     {
-        private DutchAuction auction;
+        private DutchAuction dutchAuction;
 
         public int ProductId { get; set; }
 
@@ -42,16 +42,16 @@ namespace JumpIn.Auction.Domain.Models.Auction
         [StringLength(250, ErrorMessage = "The Additional details cannot exceed 250 characters.")]
         public string AdditionalDetail { get; set; }
 
-        public int AuctionId { get; private set; }
+        public int DutchAuctionId { get; private set; }
 
-        public DutchAuction Auction
+        public DutchAuction DutchAuction
         {
-            get => auction;
+            get => dutchAuction;
 
             set
             {
-                auction = value;
-                AuctionId = value is null ? throw new ArgumentNullException(nameof(Auction)) : value.DutchAuctionId;
+                dutchAuction = value;
+                DutchAuctionId = value is null ? throw new ArgumentNullException(nameof(DutchAuction)) : value.DutchAuctionId;
             }
         }
     }

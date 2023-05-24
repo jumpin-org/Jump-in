@@ -16,6 +16,10 @@ namespace JumpIn.Auction.Domain.Models.Admin
         public string Name { get; set; }
 
         [Required]
+        [StringLength(64, ErrorMessage = "The Last Name value cannot exceed 64 characters.")]
+        public string LastName { get; set; }
+
+        [Required]
         public string Email { get; set; }
 
         [Required]
@@ -27,19 +31,12 @@ namespace JumpIn.Auction.Domain.Models.Admin
         [Required]
         public string PhoneNumber { get; set; }
 
-        public ICollection<Account> Accounts { get; private set; }
+        public int? AccountId { get; set; }
 
-        public ICollection<Administrator> Administrators { get; private set; }
+        public Account Account { get; set; }
 
+        public int? AdministratorId { get; set; }
 
-        public void AddAccount(Account account)
-        {
-            Accounts.Add(account);
-        }
-
-        public void AddAdministrator(Administrator administrator)
-        {
-            Administrators.Add(administrator);
-        }
+        public Administrator Administrator { get; set; }
     }
 }

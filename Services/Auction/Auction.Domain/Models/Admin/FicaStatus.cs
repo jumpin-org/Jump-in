@@ -30,6 +30,6 @@ namespace JumpIn.Auction.Domain.Models.Admin
         [StringLength(128, ErrorMessage = "The Description value cannot exceed 128 characters.")]
         public string Description { get; private set; }
 
-        public ICollection<FicaDetail> FicaDetaila { get; private set; }
+        public ICollection<FicaDetail> FicaDetails { get; private set; }
     }
 }

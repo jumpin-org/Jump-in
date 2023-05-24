@@ -1,6 +1,8 @@
 ﻿using JumpIn.Auction.Domain.Models.Admin;
 using JumpIn.Auction.Domain.Models.Auction;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Xml;
 
 namespace JumpIn.Auction.Domain.Contexts.MigrationExclusions
 {
@@ -20,6 +22,7 @@ namespace JumpIn.Auction.Domain.Contexts.MigrationExclusions
             modelBuilder.Entity<BidStatus>().ToTable(nameof(BidStatus), t => t.ExcludeFromMigrations());
             modelBuilder.Entity<Bid>().ToTable(nameof(Bid), t => t.ExcludeFromMigrations());
             modelBuilder.Entity<Payment>().ToTable(nameof(Payment), t => t.ExcludeFromMigrations());
-        }
+            modelBuilder.Entity<Product>().ToTable(nameof(Product), t => t.ExcludeFromMigrations());
+        }   
     }
 }
