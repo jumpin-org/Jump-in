@@ -13,7 +13,7 @@ namespace JumpIn.Auction.Domain.Models.Admin
 
         public FicaDetail FicaDetail { get; set; }
 
-        public ICollection<Seller> Sellers { get; private set; }
-        public ICollection<Bidder> Bidders { get; private set; }
+        public virtual ICollection<Seller> Sellers { get; private set; }
+        public virtual ICollection<Bidder> Bidders { get; private set; }
     }
 }

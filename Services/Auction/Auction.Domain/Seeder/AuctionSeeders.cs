@@ -1,5 +1,7 @@
-﻿using JumpIn.Auction.Domain.Models.Admin;
+﻿using JumpIn.Auction.Domain.Contexts;
+using JumpIn.Auction.Domain.Models.Admin;
 using JumpIn.Auction.Domain.Models.Auction;
+using JumpIn.Common.Domain.Constant;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,11 +20,20 @@ namespace JumpIn.Auction.Domain.Seeders
                 throw new ArgumentNullException(nameof(modelBuilder));
             }
 
+            var acccountTableName = nameof(AuctionContext.Accounts);
+            modelBuilder.Entity<Account>().ToTable(acccountTableName, DB.ADMIN_SCHEMA);
+
             modelBuilder.Entity<Seller>()
             .HasOne(x => x.Account)
             .WithMany(x => x.Sellers)
             .HasForeignKey(x => x.AccountId)
-            .OnDelete(DeleteBehavior.Cascade)
+            .IsRequired();
+
+            modelBuilder.Entity<Seller>()
+            .HasMany(x => x.DutchAuctions)
+            .WithOne(x => x.Seller)
+            .HasForeignKey(x => x.SellerId)
+            .OnDelete(DeleteBehavior.NoAction)
             .IsRequired();
         }
 
@@ -46,6 +57,9 @@ namespace JumpIn.Auction.Domain.Seeders
             {
                 throw new ArgumentNullException(nameof(modelBuilder));
             }
+
+            var administratorTableName = nameof(AuctionContext.Administrators);
+            modelBuilder.Entity<Administrator>().ToTable(administratorTableName, DB.ADMIN_SCHEMA);
 
             modelBuilder.Entity<DutchAuction>()
             .HasOne(x => x.AuctionStatus)
@@ -96,11 +110,13 @@ namespace JumpIn.Auction.Domain.Seeders
                 throw new ArgumentNullException(nameof(modelBuilder));
             }
 
+            var acccountTableName = nameof(AuctionContext.Accounts);
+            modelBuilder.Entity<Account>().ToTable(acccountTableName, DB.ADMIN_SCHEMA);
+
             modelBuilder.Entity<Bidder>()
             .HasOne(x => x.Account)
             .WithMany(x => x.Bidders)
             .HasForeignKey(x => x.AccountId)
-            .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
         }
 
@@ -129,15 +145,13 @@ namespace JumpIn.Auction.Domain.Seeders
             .HasOne(x => x.DutchAuction)
             .WithMany(x => x.Bids)
             .HasForeignKey(x => x.DutchAuctionId)
-            .OnDelete(DeleteBehavior.Cascade)
+            .OnDelete(DeleteBehavior.NoAction)
             .IsRequired();
-
 
             modelBuilder.Entity<Bid>()
             .HasOne(x => x.Bidder)
             .WithMany(x => x.Bids)
             .HasForeignKey(x => x.BidId)
-            .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
 
 
@@ -170,7 +184,6 @@ namespace JumpIn.Auction.Domain.Seeders
             .HasOne(x => x.Bid)
             .WithMany(x => x.Payments)
             .HasForeignKey(x => x.BidId)
-            .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
 
             modelBuilder.Entity<Payment>()

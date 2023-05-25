@@ -9,5 +9,7 @@ namespace JumpIn.Auction.Domain.Models.Auction
         public int AccountId { get; set; }
 
         public Account Account { get; set; }
+
+        public virtual ICollection<DutchAuction> DutchAuctions { get; private set; }
     }
 }

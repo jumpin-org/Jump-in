@@ -15,7 +15,7 @@ namespace JumpIn.Auction.Domain.Models.Auction
 
         public Bidder Bidder { get; set; }
 
-        public int DutchAuctionId { get; set; }
+        public virtual int DutchAuctionId { get; set; }
 
         public DutchAuction DutchAuction { get; set; }
 

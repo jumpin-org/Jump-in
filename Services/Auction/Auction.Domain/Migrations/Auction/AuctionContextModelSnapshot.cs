@@ -55,7 +55,7 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Account", "auction", t =>
+                    b.ToTable("Accounts", "admin", t =>
                         {
                             t.ExcludeFromMigrations();
                         });
@@ -77,7 +77,7 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Administrator", "auction", t =>
+                    b.ToTable("Administrators", "admin", t =>
                         {
                             t.ExcludeFromMigrations();
                         });
@@ -579,7 +579,7 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                     b.HasOne("JumpIn.Auction.Domain.Models.Auction.DutchAuction", "DutchAuction")
                         .WithMany("Bids")
                         .HasForeignKey("DutchAuctionId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("BidStatus");
@@ -615,9 +615,9 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                         .IsRequired();
 
                     b.HasOne("JumpIn.Auction.Domain.Models.Auction.Seller", "Seller")
-                        .WithMany()
+                        .WithMany("DutchAuctions")
                         .HasForeignKey("SellerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Administrator");
@@ -710,6 +710,11 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
 
                     b.Navigation("Product")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("JumpIn.Auction.Domain.Models.Auction.Seller", b =>
+                {
+                    b.Navigation("DutchAuctions");
                 });
 #pragma warning restore 612, 618
         }

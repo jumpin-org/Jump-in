@@ -10,6 +10,6 @@ namespace JumpIn.Auction.Domain.Models.Auction
 
         public Account Account { get; set; }
 
-        public ICollection<Bid> Bids { get; private set; }
+        public virtual ICollection<Bid> Bids { get; private set; }
     }
 }

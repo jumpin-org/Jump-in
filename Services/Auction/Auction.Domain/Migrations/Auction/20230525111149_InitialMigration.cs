@@ -41,10 +41,10 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                 {
                     table.PrimaryKey("PK_Bidders", x => x.BidderId);
                     table.ForeignKey(
-                        name: "FK_Bidders_Account_AccountId",
+                        name: "FK_Bidders_Accounts_AccountId",
                         column: x => x.AccountId,
-                        principalSchema: "auction",
-                        principalTable: "Account",
+                        principalSchema: "admin",
+                        principalTable: "Accounts",
                         principalColumn: "AccountId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -76,10 +76,10 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                 {
                     table.PrimaryKey("PK_Sellers", x => x.SellerId);
                     table.ForeignKey(
-                        name: "FK_Sellers_Account_AccountId",
+                        name: "FK_Sellers_Accounts_AccountId",
                         column: x => x.AccountId,
-                        principalSchema: "auction",
-                        principalTable: "Account",
+                        principalSchema: "admin",
+                        principalTable: "Accounts",
                         principalColumn: "AccountId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -110,10 +110,10 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                 {
                     table.PrimaryKey("PK_DutchAuctions", x => x.DutchAuctionId);
                     table.ForeignKey(
-                        name: "FK_DutchAuctions_Administrator_AdministratorId",
+                        name: "FK_DutchAuctions_Administrators_AdministratorId",
                         column: x => x.AdministratorId,
-                        principalSchema: "auction",
-                        principalTable: "Administrator",
+                        principalSchema: "admin",
+                        principalTable: "Administrators",
                         principalColumn: "AdministratorId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -128,8 +128,7 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                         column: x => x.SellerId,
                         principalSchema: "auction",
                         principalTable: "Sellers",
-                        principalColumn: "SellerId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "SellerId");
                 });
 
             migrationBuilder.CreateTable(
@@ -171,8 +170,7 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                         column: x => x.DutchAuctionId,
                         principalSchema: "auction",
                         principalTable: "DutchAuctions",
-                        principalColumn: "DutchAuctionId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "DutchAuctionId");
                 });
 
             migrationBuilder.CreateTable(
