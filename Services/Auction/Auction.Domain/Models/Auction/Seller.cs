@@ -1,15 +1,14 @@
 ﻿using JumpIn.Auction.Domain.Models.Admin;
+using JumpIn.Common.Domain.Model;
 
 namespace JumpIn.Auction.Domain.Models.Auction
 {
-    public class Seller
+    public class Seller: BaseDataModel
     {
-        public int SellerId { get; set; }
-
         public int AccountId { get; set; }
-
+        
         public Account Account { get; set; }
 
-        public virtual ICollection<DutchAuction> DutchAuctions { get; private set; }
+        public IEnumerable<DutchAuction> DutchAuctions { get; } = new List<DutchAuction>();
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JumpIn.Common.Domain.Model
 {
-    public abstract class BaseAuditableEntity
+    public abstract class BaseAuditableEntity: BaseDataModel
     {
         public DateTime DateCreated { get; set; }
 

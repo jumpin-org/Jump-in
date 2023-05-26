@@ -1,5 +1,9 @@
-﻿using JumpIn.Auction.Domain.Models.Admin;
+﻿using JumpIn.Auction.Domain.Contexts;
+using JumpIn.Auction.Domain.Models.Admin;
+using JumpIn.Auction.Domain.Models.Auction;
+using JumpIn.Common.Domain.Constant;
 using JumpIn.Common.Domain.Enums;
+using JumpIn.Common.Domain.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,12 +15,39 @@ namespace JumpIn.Auction.Domain.Seeders
 {
     public static class AdminSeeders
     {
+        public const string DEFAULT_DATE_VALUE = "NOW()";
+
+        public static void SeedBaseAuditableEntity(ModelBuilder modelBuilder)
+        {
+            if (modelBuilder is null)
+            {
+                throw new ArgumentNullException(nameof(modelBuilder));
+            }
+
+            modelBuilder.Entity<BaseAuditableEntity>()
+            .Property(b => b.CreatedBy)
+            .HasDefaultValueSql(DEFAULT_DATE_VALUE);
+        }
+
         public static void SeedUser(ModelBuilder modelBuilder)
         {
             if (modelBuilder is null)
             {
                 throw new ArgumentNullException(nameof(modelBuilder));
             }
+
+            modelBuilder.Entity<User>()
+            .HasOne(x => x.Account)
+            .WithOne(x => x.User)
+            .HasForeignKey<Account>(e => e.UserId)
+            .IsRequired();
+
+            modelBuilder.Entity<User>()
+            .HasOne(x => x.Administrator)
+            .WithOne(x => x.User)
+            .HasForeignKey<Administrator>(e => e.UserId)
+            .IsRequired();
+
         }
 
         public static void SeedAccount(ModelBuilder modelBuilder)
@@ -27,10 +58,9 @@ namespace JumpIn.Auction.Domain.Seeders
             }
 
             modelBuilder.Entity<Account>()
-            .HasOne(x => x.User)
+            .HasOne(x => x.FicaDetail)
             .WithOne(x => x.Account)
-            .HasForeignKey<Account>(x => x.UserId)
-            .OnDelete(DeleteBehavior.Cascade)
+            .HasForeignKey<FicaDetail>(e => e.AccountId)
             .IsRequired();
         }
 
@@ -40,13 +70,6 @@ namespace JumpIn.Auction.Domain.Seeders
             {
                 throw new ArgumentNullException(nameof(modelBuilder));
             }
-
-            modelBuilder.Entity<Administrator>()
-            .HasOne(x => x.User)
-            .WithOne(x => x.Administrator)
-            .HasForeignKey<Administrator>(x => x.UserId)
-            .OnDelete(DeleteBehavior.Cascade)
-            .IsRequired();
         }
 
         public static void SeedFicaStatus(ModelBuilder modelBuilder)
@@ -55,12 +78,6 @@ namespace JumpIn.Auction.Domain.Seeders
             {
                 throw new ArgumentNullException(nameof(modelBuilder));
             }
-
-            modelBuilder.Entity<FicaStatus>()
-            .HasMany(x => x.FicaDetails)
-            .WithOne(x => x.FicaStatus)
-            .HasForeignKey(x => x.FicaStatusId)
-            .IsRequired();
         }
 
         public static void SeedFicaDetail(ModelBuilder modelBuilder)
@@ -71,10 +88,9 @@ namespace JumpIn.Auction.Domain.Seeders
             }
 
             modelBuilder.Entity<FicaDetail>()
-            .HasOne(x => x.Account)
-            .WithOne(x => x.FicaDetail)
-            .HasForeignKey<FicaDetail>(x => x.AccountId)
-            .OnDelete(DeleteBehavior.Cascade)
+            .HasOne(x => x.FicaStatus)
+            .WithMany(x => x.FicaDetails)
+            .OnDelete(DeleteBehavior.ClientSetNull)
             .IsRequired();
         }
     }

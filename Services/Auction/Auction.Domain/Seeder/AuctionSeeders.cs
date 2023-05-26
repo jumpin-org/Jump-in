@@ -25,15 +25,7 @@ namespace JumpIn.Auction.Domain.Seeders
 
             modelBuilder.Entity<Seller>()
             .HasOne(x => x.Account)
-            .WithMany(x => x.Sellers)
-            .HasForeignKey(x => x.AccountId)
-            .IsRequired();
-
-            modelBuilder.Entity<Seller>()
-            .HasMany(x => x.DutchAuctions)
             .WithOne(x => x.Seller)
-            .HasForeignKey(x => x.SellerId)
-            .OnDelete(DeleteBehavior.NoAction)
             .IsRequired();
         }
 
@@ -43,12 +35,6 @@ namespace JumpIn.Auction.Domain.Seeders
             {
                 throw new ArgumentNullException(nameof(modelBuilder));
             }
-
-            modelBuilder.Entity<AuctionStatus>()
-            .HasMany(x => x.DutchAuctions)
-            .WithOne(x => x.AuctionStatus)
-            .HasForeignKey(x => x.AuctionStatusId)
-            .IsRequired();
         }
 
         public static void SeedDutchAuction(ModelBuilder modelBuilder)
@@ -58,13 +44,18 @@ namespace JumpIn.Auction.Domain.Seeders
                 throw new ArgumentNullException(nameof(modelBuilder));
             }
 
-            var administratorTableName = nameof(AuctionContext.Administrators);
-            modelBuilder.Entity<Administrator>().ToTable(administratorTableName, DB.ADMIN_SCHEMA);
-
             modelBuilder.Entity<DutchAuction>()
             .HasOne(x => x.AuctionStatus)
             .WithMany(x => x.DutchAuctions)
-            .HasForeignKey(x => x.AuctionStatusId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .IsRequired();
+
+            var administratorTableName = nameof(AdminContext.Administrators);
+            modelBuilder.Entity<Administrator>().ToTable(administratorTableName, DB.ADMIN_SCHEMA);
+
+            modelBuilder.Entity<Administrator>()
+            .HasMany(x => x.DutchAuctions)
+            .WithOne(x => x.Administrator)
             .IsRequired();
 
             modelBuilder.Entity<DutchAuction>()
@@ -90,8 +81,7 @@ namespace JumpIn.Auction.Domain.Seeders
             modelBuilder.Entity<Product>()
             .HasOne(x => x.DutchAuction)
             .WithOne(x => x.Product)
-            .HasForeignKey<Product>(x => x.DutchAuctionId)
-            .OnDelete(DeleteBehavior.Cascade)
+            .HasForeignKey<Product>(e => e.DutchAuctionId)
             .IsRequired();
 
             modelBuilder.Entity<Product>()
@@ -115,8 +105,7 @@ namespace JumpIn.Auction.Domain.Seeders
 
             modelBuilder.Entity<Bidder>()
             .HasOne(x => x.Account)
-            .WithMany(x => x.Bidders)
-            .HasForeignKey(x => x.AccountId)
+            .WithOne(x => x.Bidder)
             .IsRequired();
         }
 
@@ -126,12 +115,6 @@ namespace JumpIn.Auction.Domain.Seeders
             {
                 throw new ArgumentNullException(nameof(modelBuilder));
             }
-
-            modelBuilder.Entity<BidStatus>()
-            .HasMany(x => x.Bids)
-            .WithOne(x => x.BidStatus)
-            .HasForeignKey(x => x.BidStatusId)
-            .IsRequired();
         }
 
         public static void SeedBid(ModelBuilder modelBuilder)
@@ -142,30 +125,19 @@ namespace JumpIn.Auction.Domain.Seeders
             }
 
             modelBuilder.Entity<Bid>()
-            .HasOne(x => x.DutchAuction)
+            .HasOne(x => x.BidStatus)
             .WithMany(x => x.Bids)
-            .HasForeignKey(x => x.DutchAuctionId)
-            .OnDelete(DeleteBehavior.NoAction)
+            .OnDelete(DeleteBehavior.ClientSetNull)
             .IsRequired();
+
+            modelBuilder.Entity<Bid>()
+             .HasOne(x => x.DutchAuction)
+             .WithMany(x => x.Bids)
+             .IsRequired();
 
             modelBuilder.Entity<Bid>()
             .HasOne(x => x.Bidder)
             .WithMany(x => x.Bids)
-            .HasForeignKey(x => x.BidId)
-            .IsRequired();
-
-
-            modelBuilder.Entity<Bid>()
-            .HasMany(x => x.Payments)
-            .WithOne(x => x.Bid)
-            .HasForeignKey(x => x.PaymentId)
-            .OnDelete(DeleteBehavior.Cascade)
-            .IsRequired();
-
-            modelBuilder.Entity<Bid>()
-            .HasOne(x => x.BidStatus)
-            .WithMany(x => x.Bids)
-            .HasForeignKey(x => x.BidStatusId)
             .IsRequired();
 
             modelBuilder.Entity<Bid>()
@@ -183,7 +155,6 @@ namespace JumpIn.Auction.Domain.Seeders
             modelBuilder.Entity<Payment>()
             .HasOne(x => x.Bid)
             .WithMany(x => x.Payments)
-            .HasForeignKey(x => x.BidId)
             .IsRequired();
 
             modelBuilder.Entity<Payment>()

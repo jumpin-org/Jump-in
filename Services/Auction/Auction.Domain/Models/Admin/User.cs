@@ -1,16 +1,11 @@
 ﻿using JumpIn.Common.Domain.Model;
+using Microsoft.Extensions.Hosting;
 using System.ComponentModel.DataAnnotations;
 
 namespace JumpIn.Auction.Domain.Models.Admin
 {
     public class User : BaseAuditableEntity
     {
-        public int UserId { get; set; }
-
-        [Required]
-        [StringLength(24, ErrorMessage = "The Unique value cannot exceed 24 characters.")]
-        public string UniqueEID { get; set; }
-
         [Required]
         [StringLength(64, ErrorMessage = "The Name value cannot exceed 64 characters.")]
         public string Name { get; set; }
@@ -31,8 +26,8 @@ namespace JumpIn.Auction.Domain.Models.Admin
         [Required]
         public string PhoneNumber { get; set; }
 
-        public Account Account { get; set; }
-
         public Administrator Administrator { get; set; }
+
+        public Account Account { get; set; }
     }
 }

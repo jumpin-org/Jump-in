@@ -1,34 +1,30 @@
 ﻿using JumpIn.Common.Domain.Enums;
 using JumpIn.Common.Domain.Helpers;
+using JumpIn.Common.Domain.Model;
 using System.ComponentModel.DataAnnotations;
 
 namespace JumpIn.Auction.Domain.Models.Auction
 {
-    public class AuctionStatus
+    public class AuctionStatus: BaseStatusModel
     {
-        private AuctionStatusEnum auctionStatusId;
+        private AuctionStatusEnum id;
 
         private AuctionStatus()
+           : base()
         {
         }
 
-        public AuctionStatusEnum AuctionStatusId
+        public AuctionStatusEnum Id
         {
-            get => auctionStatusId;
+            get => id;
 
             set
             {
-                auctionStatusId = value;
+                id = value;
                 Name = value.GetEnumDescription();
             }
         }
 
-        [StringLength(25, ErrorMessage = "The Name value cannot exceed 25 characters.")]
-        public string Name { get; set; }
-
-        [StringLength(128, ErrorMessage = "The Description value cannot exceed 128 characters.")]
-        public string Description { get; private set; }
-
-        public virtual ICollection<DutchAuction> DutchAuctions { get; private set; }
+        public IEnumerable<DutchAuction> DutchAuctions { get; } = new List<DutchAuction>();
     }
 }

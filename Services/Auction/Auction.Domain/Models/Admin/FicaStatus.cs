@@ -1,35 +1,32 @@
 ﻿using JumpIn.Auction.Domain.Models.Auction;
 using JumpIn.Common.Domain.Enums;
 using JumpIn.Common.Domain.Helpers;
+using JumpIn.Common.Domain.Model;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace JumpIn.Auction.Domain.Models.Admin
 {
-    public class FicaStatus
+    public class FicaStatus : BaseStatusModel
     {
-        public FicaStatusEnum ficaStatusId;
+        private FicaStatusEnum id;
 
-        private FicaStatus()
+        private FicaStatus() 
+            : base()
         {
         }
 
-        public FicaStatusEnum FicaStatusId
+        public FicaStatusEnum Id
         {
-            get => ficaStatusId;
+            get => id;
 
             set
             {
-                ficaStatusId = value;
+                id = value;
                 Name = value.GetEnumDescription();
             }
         }
 
-        [StringLength(25, ErrorMessage = "The Name value cannot exceed 25 characters.")]
-        public string Name { get; set; }
-
-        [StringLength(128, ErrorMessage = "The Description value cannot exceed 128 characters.")]
-        public string Description { get; private set; }
-
-        public ICollection<FicaDetail> FicaDetails { get; private set; }
+        public IEnumerable<FicaDetail> FicaDetails { get; } = new List<FicaDetail>();
     }
 }
