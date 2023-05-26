@@ -1,12 +1,16 @@
-﻿namespace Admin.Domain.Modles
+﻿using JumpIn.Common.Domain.Model;
+using System.ComponentModel.DataAnnotations;
+
+namespace JumpIn.Admin.Domain.Models.Auction
 {
-    public class Payment
+    public class Payment : BaseAuditableEntity
     {
-        public int PaymentId { get; set; }
-        public int BidId { get; set; }
         public decimal Amount { get; set; }
+
         public DateTime PaymentTime { get; set; }
+
         public byte[] ProofOfPayment { get; set; }
+
         public Bid Bid { get; set; }
     }
 }

@@ -6,27 +6,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JumpIn.Admin.Domain.Contexts
+namespace JumpIn.Auction.Domain.Contexts
 {
-    public class AdminReadOnlyContext : IReadOnlyContext<AdminContext>
+    public class AuctionReadOnlyContext : IReadOnlyContext<AuctionContext>
     {
-        private readonly AdminContext AdminContext;
+        private readonly AuctionContext AuctionContext;
 
-        public AdminReadOnlyContext(AdminContext AdminContext)
+        public AuctionReadOnlyContext(AuctionContext AuctionContext)
         {
-            this.AdminContext = AdminContext;
+            this.AuctionContext = AuctionContext;
         }
 
         public IQueryable<TEntity> Set<TEntity>()
             where TEntity : class
         {
-            return AdminContext.Set<TEntity>().AsNoTracking();
+            return AuctionContext.Set<TEntity>().AsNoTracking();
         }
 
         public virtual IQueryable<TEntity> FromSqlInterpolated<TEntity>(FormattableString sql)
             where TEntity : class
         {
-            return AdminContext.Set<TEntity>().FromSqlInterpolated(sql).AsNoTracking();
+            return AuctionContext.Set<TEntity>().FromSqlInterpolated(sql).AsNoTracking();
         }
 
     }

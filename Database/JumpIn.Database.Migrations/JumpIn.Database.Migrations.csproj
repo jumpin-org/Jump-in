@@ -8,6 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Admin\**" />
+    <Compile Remove="Auction\**" />
+    <EmbeddedResource Remove="Admin\**" />
+    <EmbeddedResource Remove="Auction\**" />
+    <None Remove="Admin\**" />
+    <None Remove="Auction\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -19,11 +28,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Admin\" />
-    <Folder Include="Auction\Admin\" />
   </ItemGroup>
 
   <ItemGroup>

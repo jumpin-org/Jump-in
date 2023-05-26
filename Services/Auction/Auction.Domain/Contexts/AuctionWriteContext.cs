@@ -13,54 +13,54 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JumpIn.Admin.Domain.Contexts
+namespace JumpIn.Auction.Domain.Contexts
 {
-    public class AdminWriteContext : IWriteContext<AdminContext>
+    public class AuctionWriteContext : IWriteContext<AuctionContext>
     {
-        private readonly IDesignTimeDbContextFactory<AdminContext> contextFactory;
-        private readonly AdminContext adminContext;
-        private readonly ILogger<AdminWriteContext> logger;
+        private readonly IDesignTimeDbContextFactory<AuctionContext> contextFactory;
+        private readonly AuctionContext AuctionContext;
+        private readonly ILogger<AuctionWriteContext> logger;
 
 
-        public AdminWriteContext(IDesignTimeDbContextFactory<AdminContext> contextFactory, ILogger<AdminWriteContext> logger, string connectionString = null)
+        public AuctionWriteContext(IDesignTimeDbContextFactory<AuctionContext> contextFactory, ILogger<AuctionWriteContext> logger, string connectionString = null)
         {
             var contextArgs = !connectionString.IsNullOrEmpty() ? new string[] { connectionString } : null;
             this.contextFactory = contextFactory;
-            adminContext = this.contextFactory.CreateDbContext(contextArgs);
+            AuctionContext = this.contextFactory.CreateDbContext(contextArgs);
             this.logger = logger;
         }
 
         public string GetId()
         {
-            return adminContext.ContextId.InstanceId.ToString();
+            return AuctionContext.ContextId.InstanceId.ToString();
         }
 
-        public DatabaseFacade AdminContextDatabase()
+        public DatabaseFacade AuctionContextDatabase()
         {
-            return adminContext.Database;
+            return AuctionContext.Database;
         }
 
         public IQueryable<TEntity> Set<TEntity>()
             where TEntity : class
         {
-            return adminContext.Set<TEntity>();
+            return AuctionContext.Set<TEntity>();
         }
 
         public async Task<TEntity> SaveAsync<TEntity>(TEntity entity)
            where TEntity : BaseDataModel
         {
-            var entry = adminContext.Entry(entity);
+            var entry = AuctionContext.Entry(entity);
 
             if (entry.State == EntityState.Detached)
             {
-                adminContext.Set<TEntity>().Add(entity);
+                AuctionContext.Set<TEntity>().Add(entity);
             }
             else
             {
                 entry.State = EntityState.Modified;
             }
 
-            await adminContext.SaveChangesAsync();
+            await AuctionContext.SaveChangesAsync();
 
             return entity;
         }
@@ -68,12 +68,12 @@ namespace JumpIn.Admin.Domain.Contexts
         public async Task<ICollection<TEntity>> SaveRangeAsync<TEntity>(ICollection<TEntity> entityList)
            where TEntity : BaseDataModel
         {
-            var allEntriesDetached = entityList.All(x => adminContext.Entry(x).State == EntityState.Detached);
-            var someEntriesDetached = entityList.Any(x => adminContext.Entry(x).State == EntityState.Detached) && !allEntriesDetached;
+            var allEntriesDetached = entityList.All(x => AuctionContext.Entry(x).State == EntityState.Detached);
+            var someEntriesDetached = entityList.Any(x => AuctionContext.Entry(x).State == EntityState.Detached) && !allEntriesDetached;
 
             if (allEntriesDetached)
             {
-                adminContext.Set<TEntity>().AddRange(entityList);
+                AuctionContext.Set<TEntity>().AddRange(entityList);
             }
             else if (someEntriesDetached)
             {
@@ -84,7 +84,7 @@ namespace JumpIn.Admin.Domain.Contexts
                 throw new NotImplementedException();
             }
 
-            await adminContext.SaveChangesAsync();
+            await AuctionContext.SaveChangesAsync();
 
             return entityList;
         }
@@ -92,20 +92,20 @@ namespace JumpIn.Admin.Domain.Contexts
         public async Task DeleteAsync<TEntity>(TEntity entity)
             where TEntity : BaseDataModel
         {
-            adminContext.Remove(entity);
-            await adminContext.SaveChangesAsync();
+            AuctionContext.Remove(entity);
+            await AuctionContext.SaveChangesAsync();
         }
 
         public EntityEntry<TEntity> Entry<TEntity>(TEntity entity)
             where TEntity : BaseDomainModel
         {
-            return adminContext.Entry(entity);
+            return AuctionContext.Entry(entity);
         }
 
         public async Task<TEntity> GetEntityByIdAsync<TEntity>(int id)
             where TEntity : BaseDataModel
         {
-            var existingEntity = await adminContext.Set<TEntity>().FindAsync(id);
+            var existingEntity = await AuctionContext.Set<TEntity>().FindAsync(id);
             
             if (existingEntity is null)
             {
@@ -117,45 +117,45 @@ namespace JumpIn.Admin.Domain.Contexts
 
         public async Task SaveAllChanges()
         {
-            await adminContext.SaveChangesAsync();
+            await AuctionContext.SaveChangesAsync();
         }
 
         public async Task AddEntityAsync<TEntity>(TEntity entity)
             where TEntity : BaseDataModel
         {
-            await adminContext.Set<TEntity>().AddAsync(entity);
+            await AuctionContext.Set<TEntity>().AddAsync(entity);
         }
 
         public async Task<IDbContextTransaction> BeginTransaction()
         {
-            return await adminContext.Database.BeginTransactionAsync();
+            return await AuctionContext.Database.BeginTransactionAsync();
         }
 
         public async Task CommitTransaction()
         {
-            await adminContext.Database.CommitTransactionAsync();
+            await AuctionContext.Database.CommitTransactionAsync();
         }
 
         public async Task AddEntityRangeAsync<TEntity>(IReadOnlyList<TEntity> entities)
             where TEntity : BaseDataModel
         {
-            await adminContext.AddRangeAsync(entities);
+            await AuctionContext.AddRangeAsync(entities);
         }
 
         public IQueryable<TEntity> FromSqlInterpolated<TEntity>(FormattableString sql)
             where TEntity : class
         {
-            return adminContext.Set<TEntity>().FromSqlInterpolated(sql).AsNoTracking();
+            return AuctionContext.Set<TEntity>().FromSqlInterpolated(sql).AsNoTracking();
         }
 
         public async Task FromSqlInterpolated(FormattableString sql)
         {
-            await adminContext.Database.ExecuteSqlInterpolatedAsync(sql);
+            await AuctionContext.Database.ExecuteSqlInterpolatedAsync(sql);
         }
 
         public IEnumerable<EntityEntry> GetTrackedEntities()
         {
-            return adminContext.ChangeTracker.Entries()
+            return AuctionContext.ChangeTracker.Entries()
                 .Where(t => t.State == EntityState.Modified);
         }
 
@@ -169,7 +169,7 @@ namespace JumpIn.Admin.Domain.Contexts
         {
             if (disposing)
             {
-                adminContext?.Dispose();
+                AuctionContext?.Dispose();
             }
         }
     }

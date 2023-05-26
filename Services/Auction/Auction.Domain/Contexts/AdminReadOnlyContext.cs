@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JumpIn.Admin.Domain.Contexts
+namespace Admin.Domain.Contexts
 {
     public class AdminReadOnlyContext : IReadOnlyContext<AdminContext>
     {

@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JumpIn.Admin.Domain.Contexts
+namespace JumpIn.Auction.Domain.Contexts
 {
     public class AdminWriteContext : IWriteContext<AdminContext>
     {

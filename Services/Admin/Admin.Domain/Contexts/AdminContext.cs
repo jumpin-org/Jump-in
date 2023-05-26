@@ -1,38 +1,31 @@
-﻿using Admin.Domain.Modles;
-using Common.Domain.Contexts;
+﻿using Common.Domain.Contexts;
+using JumpIn.Admin.Domain.Models.Admin;
 using JumpIn.Common.Domain.Constant;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using System;
+using Microsoft.Extensions.Hosting;
 
-namespace Admin.Domain.Contexts
+namespace JumpIn.Auction.Domain.Contexts
 {
     public class AdminContext : BaseDbContext
     {
-        private static readonly ILoggerFactory AdminContextLoggerFactory = LoggerFactory.Create(builder => { builder.AddLog4Net(); });
+        private readonly IConfiguration config;
+        private readonly IHostEnvironment env;
 
-        public AdminContext(DbContextOptions<AdminContext> options)
-           : base(options) { }
+        public AdminContext(DbContextOptions<AdminContext> options, IConfiguration config, IHostEnvironment env, IHttpContextAccessor httpContextAccessor = null)
+            : base(options, httpContextAccessor)
+        {
 
+        }
         public DbSet<User> Users { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Administrator> Administrators { get; set; }
         public DbSet<FicaStatus> FicaStatuses { get; set; }
         public DbSet<FicaDetail> FicaDetails { get; set; }
 
-        public DbSet<Seller> Sellers { get; set; }
-        public DbSet<AuctionStatus> AuctionStatuses { get; set; }
-        public DbSet<Auction> Auctions { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Bidder> Bidders { get; set; }
-        public DbSet<BidStatus> BidStatuses { get; set; }
-        public DbSet<Bid> Bids { get; set; }
-        public DbSet<Payment> Payments { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
             if (optionsBuilder is null)
             {
                 throw new ArgumentNullException(nameof(optionsBuilder));
@@ -40,7 +33,7 @@ namespace Admin.Domain.Contexts
 
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=jumpin;Database=admin;User=sa;Password=S3cur3P@ssW0rd!;S3cur3P@ssW0rd!;");
+                optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionStrings__Default"));
             }
         }
 
@@ -49,6 +42,5 @@ namespace Admin.Domain.Contexts
             modelBuilder.HasDefaultSchema(DB.ADMIN_SCHEMA);
             modelBuilder.UseCollation(DB.CASE_INSENSITIVE_COLLATION);
         }
-
     }
 }
