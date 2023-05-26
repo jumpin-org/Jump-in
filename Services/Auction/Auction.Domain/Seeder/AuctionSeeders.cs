@@ -50,6 +50,12 @@ namespace JumpIn.Auction.Domain.Seeders
             .OnDelete(DeleteBehavior.ClientSetNull)
             .IsRequired();
 
+            modelBuilder.Entity<DutchAuction>()
+            .HasOne(x => x.Seller)
+            .WithMany(x => x.DutchAuctions)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .IsRequired();
+
             var administratorTableName = nameof(AdminContext.Administrators);
             modelBuilder.Entity<Administrator>().ToTable(administratorTableName, DB.ADMIN_SCHEMA);
 
@@ -133,6 +139,7 @@ namespace JumpIn.Auction.Domain.Seeders
             modelBuilder.Entity<Bid>()
              .HasOne(x => x.DutchAuction)
              .WithMany(x => x.Bids)
+             .OnDelete(DeleteBehavior.ClientSetNull)
              .IsRequired();
 
             modelBuilder.Entity<Bid>()

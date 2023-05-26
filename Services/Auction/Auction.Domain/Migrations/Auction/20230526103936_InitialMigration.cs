@@ -127,8 +127,7 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                         column: x => x.SellerId,
                         principalSchema: "auction",
                         principalTable: "Sellers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -170,8 +169,7 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                         column: x => x.DutchAuctionId,
                         principalSchema: "auction",
                         principalTable: "DutchAuctions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(

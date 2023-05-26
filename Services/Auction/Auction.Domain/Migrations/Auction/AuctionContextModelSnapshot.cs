@@ -583,7 +583,6 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                     b.HasOne("JumpIn.Auction.Domain.Models.Auction.DutchAuction", "DutchAuction")
                         .WithMany("Bids")
                         .HasForeignKey("DutchAuctionId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("BidStatus");
@@ -620,7 +619,6 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                     b.HasOne("JumpIn.Auction.Domain.Models.Auction.Seller", "Seller")
                         .WithMany("DutchAuctions")
                         .HasForeignKey("SellerId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Administrator");

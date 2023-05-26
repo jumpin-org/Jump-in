@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JumpIn.Auction.Domain.Migrations.Auction
 {
     [DbContext(typeof(AuctionContext))]
-    [Migration("20230526102605_InitialMigration")]
+    [Migration("20230526103936_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -586,7 +586,6 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                     b.HasOne("JumpIn.Auction.Domain.Models.Auction.DutchAuction", "DutchAuction")
                         .WithMany("Bids")
                         .HasForeignKey("DutchAuctionId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("BidStatus");
@@ -623,7 +622,6 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                     b.HasOne("JumpIn.Auction.Domain.Models.Auction.Seller", "Seller")
                         .WithMany("DutchAuctions")
                         .HasForeignKey("SellerId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Administrator");
