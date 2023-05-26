@@ -1,21 +1,10 @@
 version: '3.4'
 
+networks:
+  backend:
+
 services:
-  admin-api:
-    image: ${DOCKER_REGISTRY-}admin-api
-    build:
-      context: .
-      dockerfile: Services/Admin/Admin.API/Dockerfile
-    depends_on:
-      - db
-  auction-api:
-    image: ${DOCKER_REGISTRY-}auction-api
-    build:
-      context: .
-      dockerfile: Services/Auction/Auction.API/Dockerfile
-    depends_on:
-      - db
-  db:
+  jumpin-dbserver:
     image: ${DOCKER_REGISTRY-}jumpin-db
     build:
         context: .
@@ -24,6 +13,30 @@ services:
       - "1433:1433"
     volumes:
       - mssqldata:/var/opt/mssql
+    networks:
+      - backend
+  admin-api:
+    image: ${DOCKER_REGISTRY-}admin-api
+    build:
+      context: .
+      dockerfile: Services/Admin/Admin.API/Dockerfile
+    depends_on:
+      - jumpin-dbserver
+    networks:
+      - backend
+  auction-api:
+    image: ${DOCKER_REGISTRY-}auction-api
+    build:
+      context: .
+      dockerfile: Services/Auction/Auction.API/Dockerfile
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    depends_on:
+      - jumpin-dbserver
+    environment:
+        - DB_CONNECTION=Data Source=host.docker.internal;Initial Catalog=JumpIn;User ID=SA;Password=S3cur3P@ssW0rd!;TrustServerCertificate=true
+    networks:
+      - backend
 
 volumes:
   mssqldata:

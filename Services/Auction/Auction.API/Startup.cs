@@ -1,5 +1,8 @@
-﻿using JumpIn.Auction.API.StartupUtils.DependencyResolvers;
+﻿using JumpIn.Auction.API.StartupUtils;
+using JumpIn.Auction.API.StartupUtils.DependencyResolvers;
+using JumpIn.Auction.Domain.Contexts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
@@ -15,12 +18,12 @@ namespace JumpIn.Auction.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDBContexts(Configuration.GetConnectionString("DefaultConnection"));
+            services.AddDBContexts(Environment.GetEnvironmentVariable("DB_CONNECTION"));
 
             services.AddControllers();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
-                    //.AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
+            //.AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
 
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(c =>
@@ -43,9 +46,11 @@ namespace JumpIn.Auction.API
                 app.UseExceptionHandler("/error");
             }
 
+            SeedDatabase.PrePopulation(app);
+
             app.UseRouting();
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseAuthorization();
 

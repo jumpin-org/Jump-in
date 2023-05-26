@@ -6,7 +6,7 @@
       "serviceActions": {
         "admin-api": "StartDebugging",
         "auction-api": "StartDebugging",
-        "db": "StartWithoutDebugging"
+        "jumpin-dbserver": "StartWithoutDebugging"
       }
     }
   }
