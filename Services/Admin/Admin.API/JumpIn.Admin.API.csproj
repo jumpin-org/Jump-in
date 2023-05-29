@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Admin.BusinessLogicLayer\JumpIn.Admin.BusinessLogicLayer.csproj" />
     <ProjectReference Include="..\Admin.Domain\JumpIn.Admin.Domain.csproj" />
   </ItemGroup>
 

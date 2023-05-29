@@ -32,7 +32,7 @@ namespace JumpIn.Auction.Domain.Contexts
             var config = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile($"appsettings.{env.EnvironmentName}.json").Build();
 
             var optionsBuilder = new DbContextOptionsBuilder<AuctionContext>();
-            optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionStrings__Default"));
+            optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("DB_CONNECTION"));
 
             return new AuctionContext(optionsBuilder.Options, config, env);
         }

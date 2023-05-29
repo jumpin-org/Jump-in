@@ -22,6 +22,8 @@ services:
       dockerfile: Services/Admin/Admin.API/Dockerfile
     depends_on:
       - jumpin-dbserver
+    environment:
+        - DB_CONNECTION=Data Source=host.docker.internal;Initial Catalog=JumpIn;User ID=SA;Password=S3cur3P@ssW0rd!;TrustServerCertificate=true
     networks:
       - backend
   auction-api:

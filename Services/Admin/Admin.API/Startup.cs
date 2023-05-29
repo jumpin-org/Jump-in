@@ -19,7 +19,10 @@ namespace JumpIn.Admin.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDBContexts(connectionString: Configuration.GetConnectionString("Default"));
+            services.AddDBContexts(Environment.GetEnvironmentVariable("DB_CONNECTION"));
+
+            services
+                    .AddCommandHandlers();
 
             services.AddControllers();
 
@@ -38,8 +41,14 @@ namespace JumpIn.Admin.API
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-                app.UseExceptionHandler("/error-local-development");
+                //app.UseDeveloperExceptionPage();
+                //app.UseExceptionHandler("/error-local-development");
+                app.UseExceptionHandler(
+                  new ExceptionHandlerOptions()
+                  {
+                      AllowStatusCode404Response = true, // important!
+                      ExceptionHandlingPath = "/error"
+                  });
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }

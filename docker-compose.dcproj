@@ -6,7 +6,7 @@
     <ProjectGuid>994df2c5-da2e-4d1e-8b3b-56624b886623</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>auction-api</DockerServiceName>
+    <DockerServiceName>admin-api</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="Database\JumpIn.Admin.Database\Class1.cs" />

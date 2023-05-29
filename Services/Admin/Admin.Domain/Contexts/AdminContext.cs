@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
-namespace JumpIn.Auction.Domain.Contexts
+namespace JumpIn.Admin.Domain.Contexts
 {
     public class AdminContext : BaseDbContext
     {

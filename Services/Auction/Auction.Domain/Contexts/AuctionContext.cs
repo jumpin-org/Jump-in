@@ -49,7 +49,7 @@ namespace JumpIn.Auction.Domain.Contexts
 
             if (!optionsBuilder.IsConfigured)
             {
-               optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionStrings__Default"));
+               optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("DB_CONNECTION"));
             }
         }
 

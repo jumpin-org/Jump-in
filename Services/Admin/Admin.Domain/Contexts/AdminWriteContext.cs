@@ -19,15 +19,12 @@ namespace JumpIn.Admin.Domain.Contexts
     {
         private readonly IDesignTimeDbContextFactory<AdminContext> contextFactory;
         private readonly AdminContext adminContext;
-        private readonly ILogger<AdminWriteContext> logger;
 
-
-        public AdminWriteContext(IDesignTimeDbContextFactory<AdminContext> contextFactory, ILogger<AdminWriteContext> logger, string connectionString = null)
+        public AdminWriteContext(IDesignTimeDbContextFactory<AdminContext> contextFactory, string connectionString = null)
         {
             var contextArgs = !connectionString.IsNullOrEmpty() ? new string[] { connectionString } : null;
             this.contextFactory = contextFactory;
             adminContext = this.contextFactory.CreateDbContext(contextArgs);
-            this.logger = logger;
         }
 
         public string GetId()
