@@ -10,7 +10,6 @@ namespace JumpIn.Admin.API
 {
     public class Startup
     {
-        private readonly string corsPolicy = "CorsPolicy";
 
         public Startup(IConfiguration configuration)
         {
@@ -25,18 +24,6 @@ namespace JumpIn.Admin.API
 
             services
                     .AddCommandHandlers();
-
-            /*services.AddCors(options =>
-            {
-                var webPortalOrigin = Configuration.GetValue<string>("AllowedOrigins:WebPortal");
-                options.AddPolicy(name: corsPolicy,
-                                  policy =>
-                                  {
-                                      policy.WithOrigins(webPortalOrigin)
-                                            .WithHeaders("Content-Type", "Access-Control-Allow-Origin")
-                                            .WithMethods("GET");
-                                  });
-            });*/
 
             services.AddControllers();
 
@@ -70,8 +57,6 @@ namespace JumpIn.Admin.API
             }
 
             app.UseRouting();
-
-            //app.UseCors(corsPolicy);
 
             app.UseHttpsRedirection();
 

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 using Ocelot.DependencyInjection;
@@ -17,6 +18,18 @@ builder.Configuration.AddJsonFile("Routing/ocelot.json", optional: false, reload
 builder.Services.AddSwaggerForOcelot(builder.Configuration);
 builder.Services.AddOcelot(builder.Configuration);
 
+builder.Services.AddCors(options =>
+{
+    var webPortalOrigin = builder.Configuration.GetValue<string>("AllowedOrigins:WebPortal") ?? "";
+    options.AddPolicy(name: "CorsPolicy",
+                      policy =>
+                      {
+                          policy.WithOrigins(webPortalOrigin)
+                                .WithHeaders("Content-Type")
+                                .WithMethods("GET");
+                      });
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -25,7 +38,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("CorsPolicy");
+
 await app.UseOcelot();
+
+app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
