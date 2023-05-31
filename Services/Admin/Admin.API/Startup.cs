@@ -10,6 +10,8 @@ namespace JumpIn.Admin.API
 {
     public class Startup
     {
+        private readonly string corsPolicy = "CorsPolicy";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -23,6 +25,18 @@ namespace JumpIn.Admin.API
 
             services
                     .AddCommandHandlers();
+
+            services.AddCors(options =>
+            {
+                var webPortalOrigin = Configuration.GetValue<string>("AllowedOrigins:WebPortal");
+                options.AddPolicy(name: corsPolicy,
+                                  policy =>
+                                  {
+                                      policy.WithOrigins(webPortalOrigin)
+                                            .WithHeaders("Content-Type", "Access-Control-Allow-Origin")
+                                            .WithMethods("GET");
+                                  });
+            });
 
             services.AddControllers();
 
@@ -41,12 +55,10 @@ namespace JumpIn.Admin.API
         {
             if (env.IsDevelopment())
             {
-                //app.UseDeveloperExceptionPage();
-                //app.UseExceptionHandler("/error-local-development");
                 app.UseExceptionHandler(
                   new ExceptionHandlerOptions()
                   {
-                      AllowStatusCode404Response = true, // important!
+                      AllowStatusCode404Response = true,
                       ExceptionHandlingPath = "/error"
                   });
                 app.UseSwagger();
@@ -58,6 +70,8 @@ namespace JumpIn.Admin.API
             }
 
             app.UseRouting();
+
+            app.UseCors(corsPolicy);
 
             app.UseHttpsRedirection();
 
