@@ -45,6 +45,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StartUp", "StartUp", "{5A1F
 		Database\StartUp\startupsqlcmd.sh = Database\StartUp\startupsqlcmd.sh
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jumpin.Gateway", "Gateway\Jumpin.Gateway\Jumpin.Gateway.csproj", "{C3E0EFBB-1D89-4395-90AE-3911AB857DAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{FBD8A9E3-4523-4F02-B9F4-F714F3DDFAB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBD8A9E3-4523-4F02-B9F4-F714F3DDFAB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBD8A9E3-4523-4F02-B9F4-F714F3DDFAB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3E0EFBB-1D89-4395-90AE-3911AB857DAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3E0EFBB-1D89-4395-90AE-3911AB857DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3E0EFBB-1D89-4395-90AE-3911AB857DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3E0EFBB-1D89-4395-90AE-3911AB857DAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -113,6 +119,7 @@ Global
 		{BD8FFFD1-C3ED-46B4-A3F1-6D5055FAF42D} = {23A871D2-4E69-4D12-8465-66AA7F07B4B7}
 		{FBD8A9E3-4523-4F02-B9F4-F714F3DDFAB1} = {C5A302D8-28B9-470D-A6CB-DAA9F7BA5481}
 		{5A1F9601-CFEE-4A23-A7F2-418F08C07342} = {C5A302D8-28B9-470D-A6CB-DAA9F7BA5481}
+		{C3E0EFBB-1D89-4395-90AE-3911AB857DAE} = {296A7C95-CB14-4769-B835-B24A00972010}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CEA0185C-5C19-4B68-9B19-0963F9EB17FE}

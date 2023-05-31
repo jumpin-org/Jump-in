@@ -2,6 +2,7 @@ version: '3.4'
 
 networks:
   backend:
+    driver: bridge
 
 services:
   jumpin-dbserver:
@@ -15,7 +16,16 @@ services:
       - mssqldata:/var/opt/mssql
     networks:
       - backend
+  gateway:
+    container_name: gateway
+    image: ${DOCKER_REGISTRY-}gateway
+    build:
+      context: .
+      dockerfile: Gateway/Jumpin.Gateway/Dockerfile
+    networks:
+      - backend
   admin-api:
+    container_name: admin-api
     image: ${DOCKER_REGISTRY-}admin-api
     build:
       context: .
@@ -27,6 +37,7 @@ services:
     networks:
       - backend
   auction-api:
+    container_name: auction-api
     image: ${DOCKER_REGISTRY-}auction-api
     build:
       context: .

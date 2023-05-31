@@ -26,7 +26,7 @@ namespace JumpIn.Admin.API
             services
                     .AddCommandHandlers();
 
-            services.AddCors(options =>
+            /*services.AddCors(options =>
             {
                 var webPortalOrigin = Configuration.GetValue<string>("AllowedOrigins:WebPortal");
                 options.AddPolicy(name: corsPolicy,
@@ -36,7 +36,7 @@ namespace JumpIn.Admin.API
                                             .WithHeaders("Content-Type", "Access-Control-Allow-Origin")
                                             .WithMethods("GET");
                                   });
-            });
+            });*/
 
             services.AddControllers();
 
@@ -71,7 +71,7 @@ namespace JumpIn.Admin.API
 
             app.UseRouting();
 
-            app.UseCors(corsPolicy);
+            //app.UseCors(corsPolicy);
 
             app.UseHttpsRedirection();
 

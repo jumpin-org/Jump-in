@@ -8,9 +8,6 @@ services:
       - ASPNETCORE_HTTPS_PORT=9001
       - ASPNETCORE_Kestrel__Certificates__Default__Password=Passw0rd123
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/jumpinapi.pfx
-    ports:
-      - "9001:443"
-      - "9000:80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${USERPROFILE}/.aspnet/https:/https:ro
@@ -27,3 +24,16 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${USERPROFILE}/.aspnet/https:/https:ro
+  gateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=7001
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=Passw0rd123
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/jumpinapi.pfx
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${USERPROFILE}/.aspnet/https:/https:ro
+    ports:
+      - "7001:443"
+      - "7000:80"
