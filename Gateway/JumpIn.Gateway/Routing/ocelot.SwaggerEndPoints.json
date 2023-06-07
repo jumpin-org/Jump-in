@@ -1,0 +1,26 @@
+{
+  "SwaggerEndPoints": [
+    {
+      "Key": "Admin",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "Admin",
+          "Version": "v1",
+          "Url": "https://admin-api:443/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "Auction",
+      "TransformByOcelotConfig": true,
+      "Config": [
+        {
+          "Name": "Auction",
+          "Version": "v1",
+          "Url": "https://auction-api:443/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ]
+}

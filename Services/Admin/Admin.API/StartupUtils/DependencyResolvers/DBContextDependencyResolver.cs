@@ -16,7 +16,8 @@ namespace JumpIn.Admin.API.StartupUtils.DependencyResolvers
 
         private static IServiceCollection AddAdminContext(this IServiceCollection services, string connectionString)
         {
-            services.AddTransient<IDesignTimeDbContextFactory<AdminContext>, AdminContextFactory>()
+            services.AddTransient<AdminReadOnlyContext>()
+                    .AddTransient<IDesignTimeDbContextFactory<AdminContext>, AdminContextFactory>()
                     .AddTransient<IWriteContext<AdminContext>>(x => new AdminWriteContext(
                         x.GetRequiredService<IDesignTimeDbContextFactory<AdminContext>>(),
                     connectionString))

@@ -36,12 +36,10 @@ namespace JumpIn.Auction.API
         {
             if (env.IsDevelopment())
             {
-                //app.UseDeveloperExceptionPage();
-                //app.UseExceptionHandler("/error-local-development");
                 app.UseExceptionHandler(
                   new ExceptionHandlerOptions()
                   {
-                      AllowStatusCode404Response = true, // important!
+                      AllowStatusCode404Response = true,
                       ExceptionHandlingPath = "/error"
                   });
                 app.UseSwagger();

@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["Gateway/Jumpin.Gateway/Jumpin.Gateway.csproj", "Gateway/Jumpin.Gateway/"]
-RUN dotnet restore "Gateway/Jumpin.Gateway/Jumpin.Gateway.csproj"
+COPY ["Gateway/JumpIn.Gateway/JumpIn.Gateway.csproj", "Gateway/JumpIn.Gateway/"]
+RUN dotnet restore "Gateway/JumpIn.Gateway/JumpIn.Gateway.csproj"
 COPY . .
-WORKDIR "/src/Gateway/Jumpin.Gateway"
-RUN dotnet build "Jumpin.Gateway.csproj" -c Release -o /app/build
+WORKDIR "/src/Gateway/JumpIn.Gateway"
+RUN dotnet build "JumpIn.Gateway.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Jumpin.Gateway.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "JumpIn.Gateway.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Jumpin.Gateway.dll"]
+ENTRYPOINT ["dotnet", "JumpIn.Gateway.dll"]

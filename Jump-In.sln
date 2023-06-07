@@ -45,7 +45,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StartUp", "StartUp", "{5A1F
 		Database\StartUp\startupsqlcmd.sh = Database\StartUp\startupsqlcmd.sh
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jumpin.Gateway", "Gateway\Jumpin.Gateway\Jumpin.Gateway.csproj", "{C3E0EFBB-1D89-4395-90AE-3911AB857DAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Gateway", "Gateway\Jumpin.Gateway\JumpIn.Gateway.csproj", "{C3E0EFBB-1D89-4395-90AE-3911AB857DAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

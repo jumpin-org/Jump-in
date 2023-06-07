@@ -23,7 +23,8 @@ namespace JumpIn.Admin.API
             services.AddDBContexts(Environment.GetEnvironmentVariable("DB_CONNECTION"));
 
             services
-                    .AddCommandHandlers();
+                    .AddCommandHandlers()
+                    .AddQueryHandlers();
 
             services.AddControllers();
 

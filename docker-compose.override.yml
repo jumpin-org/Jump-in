@@ -11,6 +11,9 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${USERPROFILE}/.aspnet/https:/https:ro
+    ports:
+      - "9001:443"
+      - "9000:80"
   auction-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

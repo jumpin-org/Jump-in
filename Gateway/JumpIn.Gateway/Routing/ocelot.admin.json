@@ -1,0 +1,30 @@
+{
+  "Routes": [
+    {
+      "Key": "Admin",
+      "SwaggerKey": "Admin",
+      "UpstreamPathTemplate": "/WeatherForecast",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/WeatherForecast",
+      "DownstreamHostAndPorts": [
+        {
+          "Port": 443
+        }
+      ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    {
+      "Key": "Admin",
+      "SwaggerKey": "Admin",
+      "UpstreamPathTemplate": "/Users",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/Admin/Users",
+      "DownstreamHostAndPorts": [
+        {
+          "Port": 443
+        }
+      ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    }
+  ]
+}

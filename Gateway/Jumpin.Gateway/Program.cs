@@ -1,22 +1,14 @@
+using JumpIn.Gateway.Utilities;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using MMLib.SwaggerForOcelot.DependencyInjection;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Ocelot.Values;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gateway", Version = "v1" });
-});
-
-builder.Configuration.AddJsonFile("Routing/ocelot.json", optional: false, reloadOnChange: true);
-
-builder.Services.AddSwaggerForOcelot(builder.Configuration);
-builder.Services.AddOcelot(builder.Configuration);
 
 builder.Services.AddCors(options =>
 {
@@ -30,20 +22,43 @@ builder.Services.AddCors(options =>
                       });
 });
 
+builder.Configuration.AddOcelotWithSwaggerSupport((o) => {
+    o.Folder = "Routing";
+});
+
+builder.Services.ConfigureDownstreamHostForOcelot(builder.Configuration);
+
+builder.Services.AddSwaggerForOcelot(builder.Configuration);
+
+builder.Services.AddOcelot(builder.Configuration);
+builder.Configuration.AddOcelot("Routing", builder.Environment);
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gateway", Version = "v1" });
+});
+
 var app = builder.Build();
+
+app.UseCors("CorsPolicy");
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+
+    app.UseSwaggerForOcelotUI(options =>
+    {
+        options.ReConfigureUpstreamSwaggerJson = OcelotFileConfigurationExtensions.AlterUpstreamSwaggerJson;
+    });
+
+    app.UseDeveloperExceptionPage();
 }
 
-app.UseCors("CorsPolicy");
-
-await app.UseOcelot();
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
+
+app.UseOcelot().Wait();
 
 app.Run();

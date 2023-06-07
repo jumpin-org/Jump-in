@@ -21,7 +21,7 @@ services:
     image: ${DOCKER_REGISTRY-}gateway
     build:
       context: .
-      dockerfile: Gateway/Jumpin.Gateway/Dockerfile
+      dockerfile: Gateway/JumpIn.Gateway/Dockerfile
     networks:
       - backend
   admin-api:

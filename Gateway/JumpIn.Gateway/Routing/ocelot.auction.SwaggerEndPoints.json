@@ -1,0 +1,15 @@
+{
+  "SwaggerEndPoints": [
+    {
+      "Key": "Admin",
+      "Admin": true,
+      "Config": [
+        {
+          "Name": "Admin",
+          "Version": "1.0",
+          "Url": "http://localhost:7001/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ]
+}
