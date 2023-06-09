@@ -3,9 +3,9 @@
     {
       "Key": "Auction",
       "SwaggerKey": "Auction",
-      "UpstreamPathTemplate": "/WeatherForecasting",
+      "UpstreamPathTemplate": "/Bidders",
       "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/WeatherForecast",
+      "DownstreamPathTemplate": "/Auction/Bidders",
       "DownstreamHostAndPorts": [
         {
           "Port": 443

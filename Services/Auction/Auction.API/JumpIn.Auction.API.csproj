@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Auction.BusinessLogicLayer\JumpIn.Auction.BusinessLogicLayer.csproj" />
     <ProjectReference Include="..\Auction.Domain\JumpIn.Auction.Domain.csproj" />
   </ItemGroup>
 

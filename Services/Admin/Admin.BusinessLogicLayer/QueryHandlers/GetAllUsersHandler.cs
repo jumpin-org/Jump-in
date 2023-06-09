@@ -22,7 +22,7 @@ namespace JumpIn.Admin.BusinessLogicLayer.QueryHandlers
         {
             try
             {
-                return adminReadOnlyContext.Set<User>().Select(c => $"{c.Name} {c.LastName}").ToList();
+                return adminReadOnlyContext.Set<User>().Select(c => c.FullName).ToList();
             }
             catch
             {

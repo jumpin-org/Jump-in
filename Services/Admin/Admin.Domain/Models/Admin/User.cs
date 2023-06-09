@@ -34,6 +34,8 @@ namespace JumpIn.Admin.Domain.Models.Admin
 
         public Account Account { get; private set; }
 
+        public string FullName { get { return $"{Name} {LastName}"; } }
+
         public static User Create(string name, string lastName, string email, string password, string address, string phoneNumber)
         {
             return new User

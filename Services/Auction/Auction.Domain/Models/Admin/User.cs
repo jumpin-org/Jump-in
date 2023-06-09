@@ -29,5 +29,7 @@ namespace JumpIn.Auction.Domain.Models.Admin
         public Administrator Administrator { get; set; }
 
         public Account Account { get; set; }
+
+        public string FullName { get { return $"{Name} {LastName}"; } }
     }
 }
