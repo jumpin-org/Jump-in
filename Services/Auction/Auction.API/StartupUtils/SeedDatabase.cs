@@ -1,5 +1,6 @@
 ﻿using Common.Domain.Contexts;
 using JumpIn.Auction.Domain.Contexts;
+using JumpIn.Auction.Domain.Models.Admin;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 

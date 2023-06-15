@@ -9,19 +9,28 @@ namespace JumpIn.Common.Domain.Enums
 {
     public enum FicaStatusEnum
     {
-        [Description("New")]
-        New = 1,
+        [Description("Not Started")]
+        NotStarted = 1,
 
-        [Description("Started")]
-        Active = 2,
+        [Description("In Progress"),]
+        InProgress,
 
-        [Description("In Progress")]
-        InProgress = 3,
+        [Description("Pending")]
+        Pending,
 
-        [Description("Complete")]
-        Complete = 4,
+        [Description("Verified")]
+        Verified,
 
-        [Description("Deactivated")]
-        Deactivated = 5,
+        [Description("Rejected")]
+        Rejected,
+
+        [Description("Expired")]
+        Expired,
+
+        [Description("Suspended")]
+        Suspended,
+
+        [Description("Closed")]
+        Closed
     }
 }

@@ -6,6 +6,9 @@ using JumpIn.Admin.Domain.Contexts;
 using JumpIn.Admin.Domain.Models.Admin;
 using JumpIn.Common.Exceptions;
 using System.Net;
+using Microsoft.Identity.Client;
+using Microsoft.EntityFrameworkCore;
+using JumpIn.Common.Domain.Enums;
 
 namespace JumpIn.Admin.BusinessLogicLayer.CommandHandlers
 {
@@ -26,13 +29,23 @@ namespace JumpIn.Admin.BusinessLogicLayer.CommandHandlers
             {
                 command.CheckNotNull(nameof(command), logger);
 
+                var ficaStatus = await adminWriteContext.Set<FicaStatus>().FirstAsync(c => c.Id == FicaStatusEnum.NotStarted);
+                var ficaDetail = FicaDetail.Create(
+                    command.IDDocument,
+                    command.ProofAddress,
+                    ficaStatus
+                    );
+
                 var newUser = User.Create(
-                    command.User.Name,
-                    command.User.LastName,
-                    command.User.Email,
-                    command.User.Password,
-                    command.User.Address,
-                    command.User.PhoneNumber);
+                    command.Name,
+                    command.LastName,
+                    command.Email,
+                    command.Password,
+                    command.Address,
+                    command.PhoneNumber);
+
+                newUser.SetAccount(Account.Create(ficaDetail));
+
                 await adminWriteContext.SaveAsync(newUser);
 
                 return newUser.Id;

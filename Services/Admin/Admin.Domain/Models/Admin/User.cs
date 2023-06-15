@@ -49,6 +49,11 @@ namespace JumpIn.Admin.Domain.Models.Admin
             };
         }
 
+        public void SetAccount(Account account)
+        {
+            Account = account;
+        }
+
         public void Update(string name, string lastName, string email, string password, string address, string phoneNumber)
         {
             this.Name = name;

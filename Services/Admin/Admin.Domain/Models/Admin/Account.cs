@@ -1,19 +1,32 @@
 ﻿using JumpIn.Admin.Domain.Models.Auction;
 using JumpIn.Common.Domain.Model;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Net;
 
 namespace JumpIn.Admin.Domain.Models.Admin
 {
     public class Account : BaseAuditableEntity
     {
-        public int UserId { get; set; }
+        private Account()
+        {
+        }
 
-        public User User { get; set; }
+        public int UserId { get; private set; }
 
-        public FicaDetail FicaDetail { get; set; }
+        public User User { get; private set; }
 
-        public Seller Seller { get; set; }
+        public FicaDetail FicaDetail { get; private set; }
 
-        public Bidder Bidder { get; set; }
+        public Seller Seller { get; private set; }
+
+        public Bidder Bidder { get; private set; }
+
+        public static Account Create(FicaDetail ficaDetail)
+        {
+            return new Account
+            {
+                FicaDetail = ficaDetail,
+            };
+        }
     }
 }

@@ -4,7 +4,7 @@
       "Key": "Auction",
       "SwaggerKey": "Auction",
       "UpstreamPathTemplate": "/api/Bidders",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [ "GET" ],
       "DownstreamPathTemplate": "/Auction/Bidders",
       "DownstreamHostAndPorts": [
         {
@@ -17,7 +17,7 @@
       "Key": "Auction",
       "SwaggerKey": "Auction",
       "UpstreamPathTemplate": "/api/{auctionId}/Bids",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [ "GET" ],
       "DownstreamPathTemplate": "/Auction/{auctionId}/Bids",
       "DownstreamHostAndPorts": [
         {
