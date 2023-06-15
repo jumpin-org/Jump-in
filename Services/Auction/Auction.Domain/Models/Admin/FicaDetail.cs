@@ -8,8 +8,6 @@ namespace JumpIn.Auction.Domain.Models.Admin
 {
     public class FicaDetail : BaseAuditableEntity
     {
-        public int FicaDetailId { get; set; }
-
         public byte[]? IDDocument { get; set; }
 
         public byte[]? ProofAddress { get; set; }
