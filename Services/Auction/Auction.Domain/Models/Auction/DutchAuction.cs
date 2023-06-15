@@ -1,8 +1,6 @@
 ﻿using JumpIn.Auction.Domain.Models.Admin;
-using JumpIn.Common.Domain.Enums;
 using JumpIn.Common.Domain.Model;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 
 namespace JumpIn.Auction.Domain.Models.Auction
 {
@@ -34,7 +32,7 @@ namespace JumpIn.Auction.Domain.Models.Auction
 
         public Seller Seller { get; set; }
 
-        public Bid WinningBid { get; set; }
+        public int? WinningBidId { get; set; }
 
         public IEnumerable<Bid> Bids { get; } = new List<Bid>();
     }

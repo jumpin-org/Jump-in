@@ -32,8 +32,7 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                 schema: "auction",
                 table: "DutchAuctions",
                 type: "int",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.InsertData(
                 schema: "auction",
@@ -64,37 +63,11 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                     { 6, "Revoked", "Revoked" },
                     { 7, "Invalid", "Invalid" }
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DutchAuctions_WinningBidId",
-                schema: "auction",
-                table: "DutchAuctions",
-                column: "WinningBidId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_DutchAuctions_Bids_WinningBidId",
-                schema: "auction",
-                table: "DutchAuctions",
-                column: "WinningBidId",
-                principalSchema: "auction",
-                principalTable: "Bids",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_DutchAuctions_Bids_WinningBidId",
-                schema: "auction",
-                table: "DutchAuctions");
-
-            migrationBuilder.DropIndex(
-                name: "IX_DutchAuctions_WinningBidId",
-                schema: "auction",
-                table: "DutchAuctions");
-
             migrationBuilder.DeleteData(
                 schema: "auction",
                 table: "AuctionStatuses",

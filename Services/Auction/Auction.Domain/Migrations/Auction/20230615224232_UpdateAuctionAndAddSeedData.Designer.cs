@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JumpIn.Auction.Domain.Migrations.Auction
 {
     [DbContext(typeof(AuctionContext))]
-    [Migration("20230615214054_UpdateAuctionAndAddSeedData")]
+    [Migration("20230615224232_UpdateAuctionAndAddSeedData")]
     partial class UpdateAuctionAndAddSeedData
     {
         /// <inheritdoc />
@@ -467,7 +467,7 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
-                    b.Property<int>("WinningBidId")
+                    b.Property<int?>("WinningBidId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -477,8 +477,6 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                     b.HasIndex("AuctionStatusId");
 
                     b.HasIndex("SellerId");
-
-                    b.HasIndex("WinningBidId");
 
                     b.ToTable("DutchAuctions", "auction");
                 });
@@ -717,19 +715,11 @@ namespace JumpIn.Auction.Domain.Migrations.Auction
                         .HasForeignKey("SellerId")
                         .IsRequired();
 
-                    b.HasOne("JumpIn.Auction.Domain.Models.Auction.Bid", "WinningBid")
-                        .WithMany()
-                        .HasForeignKey("WinningBidId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Administrator");
 
                     b.Navigation("AuctionStatus");
 
                     b.Navigation("Seller");
-
-                    b.Navigation("WinningBid");
                 });
 
             modelBuilder.Entity("JumpIn.Auction.Domain.Models.Auction.Payment", b =>
