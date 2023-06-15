@@ -18,11 +18,11 @@ namespace JumpIn.Admin.BusinessLogicLayer.QueryHandlers
             this.logger = logger;
         }
 
-        public async Task<List<string>> Handle()
+        public async Task<List<string>> Execute()
         {
             try
             {
-                return adminReadOnlyContext.Set<User>().Select(c => $"{c.Name} {c.LastName}").ToList();
+                return adminReadOnlyContext.Set<User>().Select(c => c.FullName).ToList();
             }
             catch
             {

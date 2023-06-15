@@ -9,43 +9,37 @@ using System.Net;
 
 namespace JumpIn.Admin.BusinessLogicLayer.CommandHandlers
 {
-    public class UpdateUserCommandHandler : ICommandHandler<UpdateUserCommand, int>
+    public class CreateAdministratorCommandHandler : ICommandHandler<CreateAdministratorCommand, int>
     {
         private readonly AdminWriteContext adminWriteContext;
-        private readonly ILogger<UpdateUserCommandHandler> logger;
+        private readonly ILogger<CreateAdministratorCommandHandler> logger;
 
-        public UpdateUserCommandHandler(AdminWriteContext adminWriteContext, ILogger<UpdateUserCommandHandler> logger)
+        public CreateAdministratorCommandHandler(AdminWriteContext adminWriteContext, ILogger<CreateAdministratorCommandHandler> logger)
         {
             this.adminWriteContext = adminWriteContext;
             this.logger = logger;
         }
 
-        public async Task<int> Handle(UpdateUserCommand command)
+        public async Task<int> Handle(CreateAdministratorCommand command)
         {
             try
             {
                 command.CheckNotNull(nameof(command), logger);
 
-                var existingUser = adminWriteContext.Set<User>().FirstOrDefault(x => x.Id == command.Id);
-
-                if (existingUser is not null)
-                {
-                    existingUser.Update(
+                var newUser = User.Create(
                     command.User.Name,
                     command.User.LastName,
                     command.User.Email,
                     command.User.Password,
                     command.User.Address,
                     command.User.PhoneNumber);
-                    await adminWriteContext.SaveAsync(existingUser);
-                    return existingUser.Id ;
-                }
+                await adminWriteContext.SaveAsync(newUser);
 
-                throw new NullReferenceException();
+                return newUser.Id;
             }
-            catch(Exception ex)
+            catch
             {
-                logger.LogError(ExceptionMessages.COMMAND_HANDLER_ERROR.InvariantFormat(ex.Message));
+                logger.LogError(ExceptionMessages.COMMAND_HANDLER_ERROR.InvariantFormat(GetType().FullName));
                 throw;
             }
         }

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Auction.Domain\JumpIn.Auction.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

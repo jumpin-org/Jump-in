@@ -20,9 +20,6 @@ namespace JumpIn.Auction.Domain.Seeders
                 throw new ArgumentNullException(nameof(modelBuilder));
             }
 
-            var acccountTableName = nameof(AuctionContext.Accounts);
-            modelBuilder.Entity<Account>().ToTable(acccountTableName, DB.ADMIN_SCHEMA);
-
             modelBuilder.Entity<Seller>()
             .HasOne(x => x.Account)
             .WithOne(x => x.Seller)
@@ -55,9 +52,6 @@ namespace JumpIn.Auction.Domain.Seeders
             .WithMany(x => x.DutchAuctions)
             .OnDelete(DeleteBehavior.ClientSetNull)
             .IsRequired();
-
-            var administratorTableName = nameof(AdminContext.Administrators);
-            modelBuilder.Entity<Administrator>().ToTable(administratorTableName, DB.ADMIN_SCHEMA);
 
             modelBuilder.Entity<Administrator>()
             .HasMany(x => x.DutchAuctions)
@@ -105,9 +99,6 @@ namespace JumpIn.Auction.Domain.Seeders
             {
                 throw new ArgumentNullException(nameof(modelBuilder));
             }
-
-            var acccountTableName = nameof(AuctionContext.Accounts);
-            modelBuilder.Entity<Account>().ToTable(acccountTableName, DB.ADMIN_SCHEMA);
 
             modelBuilder.Entity<Bidder>()
             .HasOne(x => x.Account)

@@ -3,9 +3,48 @@
     {
       "Key": "Auction",
       "SwaggerKey": "Auction",
-      "UpstreamPathTemplate": "/WeatherForecasting",
-      "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/WeatherForecast",
+      "UpstreamPathTemplate": "/api/Bidders",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/Auction/Bidders",
+      "DownstreamHostAndPorts": [
+        {
+          "Port": 443
+        }
+      ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    {
+      "Key": "Auction",
+      "SwaggerKey": "Auction",
+      "UpstreamPathTemplate": "/api/{auctionId}/Bids",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/Auction/{auctionId}/Bids",
+      "DownstreamHostAndPorts": [
+        {
+          "Port": 443
+        }
+      ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    {
+      "Key": "Auction",
+      "SwaggerKey": "Auction",
+      "UpstreamPathTemplate": "/api/{accountId}/Bidder",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/Auction/{accountId}/Bidder",
+      "DownstreamHostAndPorts": [
+        {
+          "Port": 443
+        }
+      ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    {
+      "Key": "Auction",
+      "SwaggerKey": "Auction",
+      "UpstreamPathTemplate": "/api/{auctionId}/Bid",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/Auction/{auctionId}/Bid",
       "DownstreamHostAndPorts": [
         {
           "Port": 443

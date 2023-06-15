@@ -9,18 +9,18 @@ namespace JumpIn.Common.Domain.BusinessLogicLayer
     public interface ICommandHandler<TCommand, TResult>
         where TCommand : ICommand<TResult>
     {
-        Task<TResult> Execute(TCommand command);
+        Task<TResult> Handle(TCommand command);
     }
 
     public interface ICommandHandler<in TCommand>
         where TCommand : ICommand
     {
-        Task Execute(TCommand command);
+        Task Handle(TCommand command);
     }
 
     public interface ICommandHandler
     {
-        Task Execute();
+        Task Handle();
     }
 
     public interface IDeleteCommandHandler

@@ -3,9 +3,9 @@
     {
       "Key": "Admin",
       "SwaggerKey": "Admin",
-      "UpstreamPathTemplate": "/api/Users",
-      "UpstreamHttpMethod": [ "GET" ],
-      "DownstreamPathTemplate": "/Admin/Users",
+      "UpstreamPathTemplate": "/api/Registration/Account",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/Registration/Account",
       "DownstreamHostAndPorts": [
         {
           "Port": 443

@@ -16,7 +16,7 @@ namespace JumpIn.Admin.API.Controllers
         public Task<List<string>> GetUsers(
             [FromServices] GetAllUsersHandler handler)
         {
-            return handler.Handle();
+            return handler.Execute();
         }
 
         [HttpPost("User", Name = nameof(CreateUser))]
@@ -24,7 +24,7 @@ namespace JumpIn.Admin.API.Controllers
             [FromServices] CreateUserCommandHandler handler,
             [FromBody] UserDto userDto)
         {
-            return handler.Execute(new CreateUserCommand(userDto));
+            return handler.Handle(new CreateUserCommand(userDto));
         }
 
         [HttpPost("{userId:int}/User", Name = nameof(UpdateUser))]
@@ -33,7 +33,7 @@ namespace JumpIn.Admin.API.Controllers
             [FromBody] UserDto userDto,
             int userId)
         {
-            return handler.Execute(new UpdateUserCommand(userId, userDto));
+            return handler.Handle(new UpdateUserCommand(userId, userDto));
         }
     }
 }

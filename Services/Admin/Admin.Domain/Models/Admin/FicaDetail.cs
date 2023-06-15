@@ -8,7 +8,9 @@ namespace JumpIn.Admin.Domain.Models.Admin
 {
     public class FicaDetail : BaseAuditableEntity
     {
-        public int FicaDetailId { get; set; }
+        private FicaDetail()
+        {
+        }
 
         public byte[]? IDDocument { get; set; }
 
@@ -19,5 +21,15 @@ namespace JumpIn.Admin.Domain.Models.Admin
         public int AccountId { get; set; }
 
         public Account Account { get; set; }
+
+        public static FicaDetail Create(byte[]? iDDocument, byte[]? proofAddress, FicaStatus ficaStatus)
+        {
+            return new FicaDetail() 
+            { 
+                IDDocument = iDDocument,
+                ProofAddress = proofAddress,
+                FicaStatus = ficaStatus
+            };
+        }
     }
 }

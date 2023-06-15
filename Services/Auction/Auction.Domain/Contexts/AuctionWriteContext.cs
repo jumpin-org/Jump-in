@@ -19,15 +19,13 @@ namespace JumpIn.Auction.Domain.Contexts
     {
         private readonly IDesignTimeDbContextFactory<AuctionContext> contextFactory;
         private readonly AuctionContext AuctionContext;
-        private readonly ILogger<AuctionWriteContext> logger;
 
 
-        public AuctionWriteContext(IDesignTimeDbContextFactory<AuctionContext> contextFactory, ILogger<AuctionWriteContext> logger, string connectionString = null)
+        public AuctionWriteContext(IDesignTimeDbContextFactory<AuctionContext> contextFactory, string connectionString = null)
         {
             var contextArgs = !connectionString.IsNullOrEmpty() ? new string[] { connectionString } : null;
             this.contextFactory = contextFactory;
             AuctionContext = this.contextFactory.CreateDbContext(contextArgs);
-            this.logger = logger;
         }
 
         public string GetId()

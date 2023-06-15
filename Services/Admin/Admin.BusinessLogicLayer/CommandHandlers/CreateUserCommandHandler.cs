@@ -20,7 +20,7 @@ namespace JumpIn.Admin.BusinessLogicLayer.CommandHandlers
             this.logger = logger;
         }
 
-        public async Task<int> Execute(CreateUserCommand command)
+        public async Task<int> Handle(CreateUserCommand command)
         {
             try
             {
