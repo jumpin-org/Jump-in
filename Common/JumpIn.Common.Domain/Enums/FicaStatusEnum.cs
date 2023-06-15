@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JumpIn.Common.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,19 +10,28 @@ namespace JumpIn.Common.Domain.Enums
 {
     public enum FicaStatusEnum
     {
-        [Description("New")]
-        New = 1,
+        [EnumInfo("Not Started", "FICA verification process has not been initiated.")]
+        NotStarted = 1,
 
-        [Description("Started")]
-        Active = 2,
+        [EnumInfo("In Progress", "FICA verification is in progress.")]
+        InProgress,
 
-        [Description("In Progress")]
-        InProgress = 3,
+        [EnumInfo("Pending", "FICA verification is pending and awaiting further action.")]
+        Pending,
 
-        [Description("Complete")]
-        Complete = 4,
+        [EnumInfo("Verified", "FICA verification has been completed and the individual or entity is verified.")]
+        Verified,
 
-        [Description("Deactivated")]
-        Deactivated = 5,
+        [EnumInfo("Rejected", "FICA verification has been rejected due to failure to meet requirements or provide necessary documentation.")]
+        Rejected,
+
+        [EnumInfo("Expired", "FICA verification has expired and needs to be renewed.")]
+        Expired,
+
+        [EnumInfo("Suspended", "FICA verification has been temporarily suspended for some reason.")]
+        Suspended,
+
+        [EnumInfo("Closed", "FICA verification process has been closed or terminated.")]
+        Closed
     }
 }

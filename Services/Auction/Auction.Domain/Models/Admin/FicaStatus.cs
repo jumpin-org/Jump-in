@@ -23,8 +23,14 @@ namespace JumpIn.Auction.Domain.Models.Admin
             set
             {
                 id = value;
-                Name = value.GetEnumDescription();
+                Name = value.GetEnumName();
+                Description = value.GetEnumFullDescription();
             }
+        }
+
+        public static FicaStatus Create(FicaStatusEnum id)
+        {
+            return new FicaStatus() { Id = id};
         }
 
         public IEnumerable<FicaDetail> FicaDetails { get; } = new List<FicaDetail>();

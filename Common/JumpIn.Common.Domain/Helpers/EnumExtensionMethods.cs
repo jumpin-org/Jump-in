@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JumpIn.Common.Domain.Enums;
+using System;
 using System.ComponentModel;
 using System.Reflection;
 
@@ -22,6 +23,42 @@ namespace JumpIn.Common.Domain.Helpers
 
             var attribute = (DescriptionAttribute)fieldInfo.GetCustomAttribute(typeof(DescriptionAttribute));
             return attribute.Description;
+        }
+
+        public static string GetEnumFullDescription(this Enum value)
+        {
+            if (value is null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            var fieldInfo = value.GetType().GetField(value.ToString());
+
+            if (fieldInfo is null)
+            {
+                return null;
+            }
+
+            var attribute = fieldInfo.GetCustomAttribute<EnumInfoAttribute>();
+            return attribute?.Description;
+        }
+
+        public static string GetEnumName(this Enum value)
+        {
+            if (value is null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            var fieldInfo = value.GetType().GetField(value.ToString());
+
+            if (fieldInfo is null)
+            {
+                return null;
+            }
+
+            var attribute = fieldInfo.GetCustomAttribute<EnumInfoAttribute>();
+            return attribute?.Name;
         }
     }
 }
