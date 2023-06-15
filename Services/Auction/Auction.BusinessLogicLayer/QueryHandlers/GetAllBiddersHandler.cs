@@ -1,8 +1,10 @@
 ﻿using JumpIn.Auction.Domain.Contexts;
+using JumpIn.Auction.Domain.Models.Admin;
 using JumpIn.Auction.Domain.Models.Auction;
 using JumpIn.Common.Domain.BusinessLogicLayer;
 using JumpIn.Common.Domain.Helpers;
 using JumpIn.Common.Exceptions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace JumpIn.Auction.BusinessLogicLayer.QueryHandlers
@@ -18,7 +20,7 @@ namespace JumpIn.Auction.BusinessLogicLayer.QueryHandlers
             this.logger = logger;
         }
 
-        public async Task<List<string>> Handle()
+        public async Task<List<string>> Execute()
         {
             try
             {

@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CommandHandlers\" />
-    <Folder Include="Commands\" />
-    <Folder Include="Dtos\" />
-    <Folder Include="Queries\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Auction.Domain\JumpIn.Auction.Domain.csproj" />
   </ItemGroup>
 

@@ -20,6 +20,10 @@ namespace JumpIn.Auction.API
         {
             services.AddDBContexts(Environment.GetEnvironmentVariable("DB_CONNECTION"));
 
+            services
+                .AddCommandHandlers()
+                .AddQueryHandlers();
+
             services.AddControllers();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);

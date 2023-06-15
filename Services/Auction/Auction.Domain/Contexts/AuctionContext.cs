@@ -60,6 +60,15 @@ namespace JumpIn.Auction.Domain.Contexts
             modelBuilder.HasDefaultSchema(DB.AUCTION_SCHEMA);
             modelBuilder.UseCollation(DB.CASE_INSENSITIVE_COLLATION);
 
+            var userTableName = nameof(AuctionContext.Users);
+            modelBuilder.Entity<User>().ToTable(userTableName, DB.ADMIN_SCHEMA);
+
+            var administratorTableName = nameof(AdminContext.Administrators);
+            modelBuilder.Entity<Administrator>().ToTable(administratorTableName, DB.ADMIN_SCHEMA);
+
+            var accountTableName = nameof(AuctionContext.Accounts);
+            modelBuilder.Entity<Account>().ToTable(accountTableName, DB.ADMIN_SCHEMA);
+
             AuctionSeeders.SeedSeller(modelBuilder);
             AuctionSeeders.SeedAuctionStatus(modelBuilder);
             AuctionSeeders.SeedDutchAuction(modelBuilder);

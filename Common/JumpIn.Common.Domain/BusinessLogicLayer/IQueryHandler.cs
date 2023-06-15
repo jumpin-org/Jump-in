@@ -3,11 +3,11 @@
     public interface IQueryHandler<TQuery, out TResult>
         where TQuery : IQuery<TResult>
     {
-        TResult Handle(TQuery query);
+        TResult Execute(TQuery query);
     }
 
     public interface IQueryHandler<out TResult>
     {
-        TResult Handle();
+        TResult Execute();
     }
 }

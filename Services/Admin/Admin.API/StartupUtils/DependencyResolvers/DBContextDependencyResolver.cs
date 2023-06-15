@@ -2,7 +2,6 @@
 using JumpIn.Admin.Domain.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.EntityFrameworkCore.Internal;
 
 namespace JumpIn.Admin.API.StartupUtils.DependencyResolvers
 {
@@ -11,7 +10,7 @@ namespace JumpIn.Admin.API.StartupUtils.DependencyResolvers
         public static void AddDBContexts(this IServiceCollection services, string connectionString)
         {
             services.AddDbContext<AdminContext>(options => options.UseSqlServer(connectionString))
-                    .AddAdminContext(connectionString); ;
+                    .AddAdminContext(connectionString);
         }
 
         private static IServiceCollection AddAdminContext(this IServiceCollection services, string connectionString)

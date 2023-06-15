@@ -18,7 +18,7 @@ namespace JumpIn.Admin.BusinessLogicLayer.QueryHandlers
             this.logger = logger;
         }
 
-        public async Task<List<string>> Handle()
+        public async Task<List<string>> Execute()
         {
             try
             {
