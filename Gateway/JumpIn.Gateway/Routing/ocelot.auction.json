@@ -51,6 +51,19 @@
         }
       ],
       "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    {
+      "Key": "Auction",
+      "SwaggerKey": "Auction",
+      "UpstreamPathTemplate": "/api/Create",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/Auction/Create",
+      "DownstreamHostAndPorts": [
+        {
+          "Port": 443
+        }
+      ],
+      "DangerousAcceptAnyServerCertificateValidator": true
     }
   ]
 }

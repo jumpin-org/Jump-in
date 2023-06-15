@@ -33,6 +33,8 @@ namespace JumpIn.Admin.Domain.Models.Auction
 
         public Seller Seller { get; set; }
 
+        public int? WinningBidId { get; set; }
+
         public IEnumerable<Bid> Bids { get; } = new List<Bid>();
     }
 }

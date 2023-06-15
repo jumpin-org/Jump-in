@@ -42,5 +42,13 @@ namespace JumpIn.Auction.API.Controllers
         {
             return handler.Handle(new CreateBidCommand(bid.BidderId, bid.DutchAuctionId, bid.Amount, bid.BidTime));
         }
+
+        [HttpPost("Create", Name = nameof(CreateDutchAuction))]
+        public Task<int> CreateDutchAuction(
+            [FromServices] CreateDutchAuctionCommandHandler handler,
+            [FromBody] CreateDutchAuctionCommand createDutchAuctionCommand)
+        {
+            return handler.Handle(createDutchAuctionCommand);
+        }
     }
 }

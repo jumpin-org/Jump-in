@@ -7,17 +7,17 @@ namespace JumpIn.Auction.API.StartupUtils.DependencyResolvers
         public static IServiceCollection AddCommandHandlers(this IServiceCollection services)
         {
             services.
-                AddUserCommandHandlers();
+                AddAuctionCommandHandlers();
 
            return services;
         }
 
-        private static IServiceCollection AddUserCommandHandlers(this IServiceCollection services)
+        private static IServiceCollection AddAuctionCommandHandlers(this IServiceCollection services)
         {
             services
                 .AddScoped<CreateBidderCommandHandler>()
-                .AddScoped<CreateBidCommandHandler>();
-
+                .AddScoped<CreateBidCommandHandler>()
+                .AddScoped < CreateDutchAuctionCommandHandler>();
             return services;
         }
     }
