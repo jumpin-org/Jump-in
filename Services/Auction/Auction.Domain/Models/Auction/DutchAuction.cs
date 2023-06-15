@@ -22,7 +22,9 @@ namespace JumpIn.Auction.Domain.Models.Auction
 
         public decimal Decrement { get; set; }
 
-        public DateTime EndTime { get; set; }
+        public DateTime StartDateTime { get; set; }
+
+        public DateTime EndDateTime { get; set; }
 
         public AuctionStatus AuctionStatus { get; set; }
 
@@ -31,6 +33,8 @@ namespace JumpIn.Auction.Domain.Models.Auction
         public Administrator Administrator { get; set; }
 
         public Seller Seller { get; set; }
+
+        public Bid WinningBid { get; set; }
 
         public IEnumerable<Bid> Bids { get; } = new List<Bid>();
     }

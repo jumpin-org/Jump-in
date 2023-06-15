@@ -12,16 +12,22 @@ namespace JumpIn.Common.Domain.Enums
         [Description("New")]
         New = 1,
 
+        [Description("Active")]
+        Active,
+
         [Description("Started")]
-        Active = 2,
+        Started,
 
         [Description("In Progress")]
-        InProgress = 3,
+        InProgress,
 
-        [Description("Complete")]
-        Complete = 4,
+        [Description("Ended")]
+        Ended,
+
+        [Description("Closed")]
+        Closed,
 
         [Description("Deactivated")]
-        Deactivated = 5,
+        Deactivated,
     }
 }

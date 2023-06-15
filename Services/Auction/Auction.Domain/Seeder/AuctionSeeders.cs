@@ -2,6 +2,8 @@
 using JumpIn.Auction.Domain.Models.Admin;
 using JumpIn.Auction.Domain.Models.Auction;
 using JumpIn.Common.Domain.Constant;
+using JumpIn.Common.Domain.Enums;
+using JumpIn.Common.Domain.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -32,6 +34,17 @@ namespace JumpIn.Auction.Domain.Seeders
             {
                 throw new ArgumentNullException(nameof(modelBuilder));
             }
+
+            modelBuilder.Entity<AuctionStatus>()
+            .HasData(
+                new { Id = AuctionStatusEnum.New, Name = AuctionStatusEnum.New.GetEnumDescription(), Description = AuctionStatusEnum.New.GetEnumDescription() },
+                new { Id = AuctionStatusEnum.Active, Name = AuctionStatusEnum.Active.GetEnumDescription(), Description = AuctionStatusEnum.Active.GetEnumDescription() },
+                new { Id = AuctionStatusEnum.Started, Name = AuctionStatusEnum.Started.GetEnumDescription(), Description = AuctionStatusEnum.Started.GetEnumDescription() },
+                new { Id = AuctionStatusEnum.InProgress, Name = AuctionStatusEnum.InProgress.GetEnumDescription(), Description = AuctionStatusEnum.InProgress.GetEnumDescription() },
+                new { Id = AuctionStatusEnum.Ended, Name = AuctionStatusEnum.Ended.GetEnumDescription(), Description = AuctionStatusEnum.Ended.GetEnumDescription() },
+                new { Id = AuctionStatusEnum.Closed, Name = AuctionStatusEnum.Closed.GetEnumDescription(), Description = AuctionStatusEnum.Closed.GetEnumDescription() },
+                new { Id = AuctionStatusEnum.Deactivated, Name = AuctionStatusEnum.Deactivated.GetEnumDescription(), Description = AuctionStatusEnum.Deactivated.GetEnumDescription() }
+                );
         }
 
         public static void SeedDutchAuction(ModelBuilder modelBuilder)
@@ -112,6 +125,17 @@ namespace JumpIn.Auction.Domain.Seeders
             {
                 throw new ArgumentNullException(nameof(modelBuilder));
             }
+
+            modelBuilder.Entity<BidStatus>()
+            .HasData(
+                new { Id = BidStatusEnum.New, Name = BidStatusEnum.New.GetEnumDescription(), Description = BidStatusEnum.New.GetEnumDescription() },
+                new { Id = BidStatusEnum.Placed, Name = BidStatusEnum.Placed.GetEnumDescription(), Description = BidStatusEnum.Placed.GetEnumDescription() },
+                new { Id = BidStatusEnum.Active, Name = BidStatusEnum.Active.GetEnumDescription(), Description = BidStatusEnum.Active.GetEnumDescription() },
+                new { Id = BidStatusEnum.Highest, Name = BidStatusEnum.Highest.GetEnumDescription(), Description = BidStatusEnum.Highest.GetEnumDescription() },
+                new { Id = BidStatusEnum.Lowest, Name = BidStatusEnum.Lowest.GetEnumDescription(), Description = BidStatusEnum.Lowest.GetEnumDescription() },
+                new { Id = BidStatusEnum.Revoked, Name = BidStatusEnum.Revoked.GetEnumDescription(), Description = BidStatusEnum.Revoked.GetEnumDescription() },
+                new { Id = BidStatusEnum.Invalid, Name = BidStatusEnum.Invalid.GetEnumDescription(), Description = BidStatusEnum.Invalid.GetEnumDescription() }
+                );
         }
 
         public static void SeedBid(ModelBuilder modelBuilder)

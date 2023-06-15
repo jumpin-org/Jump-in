@@ -13,21 +13,22 @@ namespace JumpIn.Common.Domain.Enums
         New = 1,
 
         [Description("Placed")]
-        Placed = 2,
+        Placed,
 
         [Description("Active")]
-        Active = 3,
+        Active,
 
         [Description("Highest")]
-        Highest = 4,
+        Highest,
 
         [Description("Lowest")]
-        Lowest = 5,
+        Lowest,
 
         [Description("Revoked")]
-        Revoked = 6,
+        Revoked,
 
         [Description("Invalid")]
-        Invalid = 7,
+        Invalid
+
     }
 }

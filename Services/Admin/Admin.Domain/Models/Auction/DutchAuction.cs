@@ -21,8 +21,9 @@ namespace JumpIn.Admin.Domain.Models.Auction
         public decimal CurrentPrice { get; set; }
 
         public decimal Decrement { get; set; }
+        public DateTime StartDateTime { get; set; }
 
-        public DateTime EndTime { get; set; }
+        public DateTime EndDateTime { get; set; }
 
         public AuctionStatus AuctionStatus { get; set; }
 
