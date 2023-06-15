@@ -49,6 +49,11 @@ namespace JumpIn.Admin.Domain.Models.Admin
             };
         }
 
+        public void SetAdministrator()
+        {
+            Administrator = new Administrator();
+        }
+
         public void SetAccount(Account account)
         {
             Account = account;

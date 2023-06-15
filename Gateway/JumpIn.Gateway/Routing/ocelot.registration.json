@@ -12,6 +12,19 @@
         }
       ],
       "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    {
+      "Key": "Admin",
+      "SwaggerKey": "Admin",
+      "UpstreamPathTemplate": "/api/Registration/Administrator",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/Registration/Administrator",
+      "DownstreamHostAndPorts": [
+        {
+          "Port": 443
+        }
+      ],
+      "DangerousAcceptAnyServerCertificateValidator": true
     }
   ]
 }

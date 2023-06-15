@@ -27,12 +27,15 @@ namespace JumpIn.Admin.BusinessLogicLayer.CommandHandlers
                 command.CheckNotNull(nameof(command), logger);
 
                 var newUser = User.Create(
-                    command.User.Name,
-                    command.User.LastName,
-                    command.User.Email,
-                    command.User.Password,
-                    command.User.Address,
-                    command.User.PhoneNumber);
+                    command.Name,
+                    command.LastName,
+                    command.Email,
+                    command.Password,
+                    command.Address,
+                    command.PhoneNumber);
+
+                newUser.SetAdministrator();
+
                 await adminWriteContext.SaveAsync(newUser);
 
                 return newUser.Id;

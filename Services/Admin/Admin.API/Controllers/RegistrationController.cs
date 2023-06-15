@@ -17,5 +17,13 @@ namespace JumpIn.Admin.API.Controllers
             return handler.Handle(createAccountCommand);
         }
 
+        [HttpPost("Administrator", Name = nameof(CreateAdministrator))]
+        public Task<int> CreateAdministrator(
+            [FromServices] CreateAdministratorCommandHandler handler,
+            [FromBody] CreateAdministratorCommand createAdministratorCommand)
+        {
+            return handler.Handle(createAdministratorCommand);
+        }
+
     }
 }

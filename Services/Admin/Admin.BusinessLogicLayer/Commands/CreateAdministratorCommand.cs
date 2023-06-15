@@ -5,11 +5,16 @@ namespace JumpIn.Admin.BusinessLogicLayer.Commands
 {
     public class CreateAdministratorCommand : ICommand<int>
     {
-        public CreateAdministratorCommand(UserDto user)
-        {
-            User = user;
-        }
+        public string Name { get; set; }
 
-        public UserDto User { get; set; }
+        public string LastName { get; set; }
+
+        public string Email { get; set; }
+
+        public string Password { get; set; }
+
+        public string Address { get; set; }
+
+        public string PhoneNumber { get; set; }
     }
 }
