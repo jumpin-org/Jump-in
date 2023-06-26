@@ -5,8 +5,7 @@ namespace JumpIn.Common.Domain.Dtos.OutputDtos
     public class BidOutputDto
     {
         private BidOutputDto()
-        {
-        }
+        { }
 
         public BidOutputDto(int bidId, decimal amount, DateTime bidTime, BidStatusEnum bidStatus)
         {

@@ -6,16 +6,33 @@ namespace JumpIn.Auction.API.StartupUtils.DependencyResolvers
     {
         public static IServiceCollection AddQueryHandlers(this IServiceCollection services)
         {
-            services.
-                AddUserQueryHandlers();
+            services
+                .AddBidderQueryHandlers()
+                .AddBidQueryHandlers()
+                .AddDutchAuctionQueryHandlers();
 
             return services;
         }
 
-        private static IServiceCollection AddUserQueryHandlers(this IServiceCollection services)
+        private static IServiceCollection AddBidderQueryHandlers(this IServiceCollection services)
         {
             services
-                .AddScoped<GetAllBiddersHandler>()
+                .AddScoped<GetAllBiddersHandler>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddDutchAuctionQueryHandlers(this IServiceCollection services)
+        {
+            services
+                .AddScoped<GetDutchAuctionsHandler>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddBidQueryHandlers(this IServiceCollection services)
+        {
+            services
                 .AddScoped<GetBidsHandler>();
 
             return services;
