@@ -18,7 +18,7 @@ namespace JumpIn.Authentication.API.Services
                 new(JwtRegisteredClaimNames.Email, user.Email),
             };
 
-            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("secret-key"));
+            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("secret-keysecret-keysecret-key"));
             var signingCredentials =  new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(

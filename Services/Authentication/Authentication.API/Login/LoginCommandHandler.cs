@@ -12,7 +12,7 @@ namespace JumpIn.Authentication.API.Login
 {
     public sealed class LoginCommandHandler : ICommandHandler<LoginCommand, string>
     {
-        private readonly AuthContext authContext;
+        private AuthContext authContext;
         private readonly JwtProvider jwtProvider;
         private readonly ILogger<LoginCommandHandler> logger;
 
@@ -28,7 +28,6 @@ namespace JumpIn.Authentication.API.Login
             try
             {
                 command.CheckNotNull(nameof(command), logger);
-
                 User? user = await authContext.Set<User>().Where(c => c.Email == command.email 
                                                               && c.Password == command.password).FirstOrDefaultAsync();
 

@@ -16,10 +16,10 @@ namespace JumpIn.Authentication.API.Controllers
             this.loginCommandHandler = loginCommandHandler;
         }
 
-        [HttpPost]
-        public IActionResult Login([FromBody] LoginRequest request)
+        [HttpPost("Login", Name = nameof(Login))]
+        public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            var loginResult = loginCommandHandler.Handle(new LoginCommand(request.email, request.email));
+            var loginResult = await loginCommandHandler.Handle(new LoginCommand(request.email, request.email));
             return loginResult is null ? Unauthorized() : Ok(loginResult);
         }
     }

@@ -1,14 +1,19 @@
+using JumpIn.Authentication.API.Contexts;
+using JumpIn.Authentication.API.Login;
 using JumpIn.Authentication.API.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddDbContext<AuthContext>(options => options.UseSqlServer(Environment.GetEnvironmentVariable("DB_CONNECTION")));
+builder.Services.AddScoped<LoginCommandHandler>();
+builder.Services.AddSingleton<JwtProvider>();
 
 builder.Services.AddControllers();
 
 var app = builder.Build();
 
-builder.Services.AddSingleton<JwtTokenService>();
+app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

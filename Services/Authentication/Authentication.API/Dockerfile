@@ -6,10 +6,10 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["Services/Authentication/JumpIn.Authentication.API/JumpIn.Authentication.API.csproj", "Services/Authentication/JumpIn.Authentication.API/"]
-RUN dotnet restore "Services/Authentication/JumpIn.Authentication.API/JumpIn.Authentication.API.csproj"
+COPY ["Services/Authentication/Authentication.API/JumpIn.Authentication.API.csproj", "Services/Authentication/Authentication.API/"]
+RUN dotnet restore "Services/Authentication/Authentication.API/JumpIn.Authentication.API.csproj"
 COPY . .
-WORKDIR "/src/Services/Authentication/JumpIn.Authentication.API"
+WORKDIR "/src/Services/Authentication/Authentication.API"
 RUN dotnet build "JumpIn.Authentication.API.csproj" -c Release -o /app/build
 
 FROM build AS publish

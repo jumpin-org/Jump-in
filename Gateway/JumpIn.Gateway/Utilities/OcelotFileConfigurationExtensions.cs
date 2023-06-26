@@ -29,6 +29,19 @@ namespace JumpIn.Gateway.Utilities
                             downStreamHost.Host = configuration.GetValue<string>("OcelotDownStreamHost:auctionApiUrl");
                         }
                     }
+
+                    /*if (route.Key == "Auth")
+                    {
+                        foreach (var downStreamHost in route.DownstreamHostAndPorts)
+                        {
+                            downStreamHost.Host = configuration.GetValue<string>("OcelotDownStreamHost:authApiUrl");
+                        }
+                    }*/
+
+                    /*if (route.UpstreamPathTemplate is not "/auth")
+                    {
+                        route.AuthenticationOptions.AuthenticationProviderKey = "Bearer";
+                    }*/
                 }
             });
 

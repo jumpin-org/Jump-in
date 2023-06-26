@@ -1,0 +1,16 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/Auth",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/Authorization/Login",
+      "DownstreamHostAndPorts": [
+        {
+          "Port": 443,
+          "Host": "auth-api"
+        }
+      ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    }
+  ]
+}

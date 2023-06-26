@@ -7,7 +7,8 @@
         "admin-api": "StartDebugging",
         "auction-api": "StartDebugging",
         "jumpin-dbserver": "StartWithoutDebugging",
-        "gateway": "StartDebugging"
+        "gateway": "StartDebugging",
+        "auth-api": "StartDebugging"
       }
     }
   }

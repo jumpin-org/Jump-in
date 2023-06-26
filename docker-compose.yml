@@ -26,6 +26,8 @@ services:
     build:
       context: .
       dockerfile: Services/Authentication/Authentication.API/Dockerfile
+    extra_hosts:
+      - host.docker.internal:host-gateway
     depends_on:
       - jumpin-dbserver
     environment:
