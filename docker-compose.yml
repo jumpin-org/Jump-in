@@ -20,6 +20,16 @@ services:
     build:
       context: .
       dockerfile: Gateway/JumpIn.Gateway/Dockerfile
+  auth-api:
+    container_name: auth-api
+    image: ${DOCKER_REGISTRY-}auth-api
+    build:
+      context: .
+      dockerfile: Services/Authentication/Authentication.API/Dockerfile
+    depends_on:
+      - jumpin-dbserver
+    environment:
+        - DB_CONNECTION=Data Source=host.docker.internal;Initial Catalog=JumpIn;User ID=SA;Password=S3cur3P@ssW0rd!;TrustServerCertificate=true
   admin-api:
     container_name: admin-api
     image: ${DOCKER_REGISTRY-}admin-api
