@@ -30,18 +30,18 @@ namespace JumpIn.Gateway.Utilities
                         }
                     }
 
-                    /*if (route.Key == "Auth")
+                    if (route.Key == "Auth")
                     {
                         foreach (var downStreamHost in route.DownstreamHostAndPorts)
                         {
                             downStreamHost.Host = configuration.GetValue<string>("OcelotDownStreamHost:authApiUrl");
                         }
-                    }*/
+                    }
 
-                    /*if (route.UpstreamPathTemplate is not "/auth")
+                    if (route.UpstreamPathTemplate is not "/auth")
                     {
                         route.AuthenticationOptions.AuthenticationProviderKey = "Bearer";
-                    }*/
+                    }
                 }
             });
 

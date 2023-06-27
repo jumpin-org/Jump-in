@@ -1,6 +1,6 @@
 ﻿using JumpIn.Admin.Domain.Models.Admin;
 using JumpIn.Common.Domain.Enums;
-using JumpIn.Common.Domain.Model;
+using JumpIn.Common.Domain.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 

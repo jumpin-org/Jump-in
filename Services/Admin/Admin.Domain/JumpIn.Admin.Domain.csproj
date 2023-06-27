@@ -38,7 +38,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\JumpIn.Common.Domain\JumpIn.Common.Domain.csproj" />
+    <ProjectReference Include="..\..\..\Common\Common.Domain\JumpIn.Common.Domain.csproj" />
+    <ProjectReference Include="..\..\..\Common\Common.Utility\JumpIn.Common.Utility.csproj" />
   </ItemGroup>
 
 </Project>

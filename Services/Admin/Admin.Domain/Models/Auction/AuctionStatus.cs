@@ -1,6 +1,6 @@
 ﻿using JumpIn.Common.Domain.Enums;
-using JumpIn.Common.Domain.Helpers;
-using JumpIn.Common.Domain.Model;
+using JumpIn.Common.Utility.Helpers;
+using JumpIn.Common.Domain.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace JumpIn.Admin.Domain.Models.Auction

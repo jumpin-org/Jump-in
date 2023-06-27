@@ -1,5 +1,5 @@
 ﻿using JumpIn.Auction.Domain.Models.Admin;
-using JumpIn.Common.Domain.Model;
+using JumpIn.Common.Domain.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace JumpIn.Auction.Domain.Models.Auction

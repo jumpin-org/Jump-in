@@ -1,4 +1,4 @@
-﻿using Common.Domain.Contexts;
+﻿using JumpIn.Common.Domain.Contexts;
 using JumpIn.Auction.Domain.Contexts.MigrationExclusions;
 using JumpIn.Auction.Domain.Models.Admin;
 using JumpIn.Auction.Domain.Models.Auction;

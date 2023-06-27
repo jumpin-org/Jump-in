@@ -1,4 +1,4 @@
-﻿using JumpIn.Common.Domain.Model;
+﻿using JumpIn.Common.Domain.Models;
 using Microsoft.Extensions.Hosting;
 using System.ComponentModel.DataAnnotations;
 

@@ -1,10 +1,10 @@
 ﻿using JumpIn.Common.Domain.BusinessLogicLayer;
 using JumpIn.Admin.BusinessLogicLayer.Commands;
 using Microsoft.Extensions.Logging;
-using JumpIn.Common.Domain.Helpers;
+using JumpIn.Common.Utility.Helpers;
 using JumpIn.Admin.Domain.Contexts;
 using JumpIn.Admin.Domain.Models.Admin;
-using JumpIn.Common.Exceptions;
+using JumpIn.Common.Utility.Exceptions;
 using System.Net;
 using Microsoft.Identity.Client;
 using Microsoft.EntityFrameworkCore;

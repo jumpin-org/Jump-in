@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\JumpIn.Common.Domain\JumpIn.Common.Domain.csproj" />
+    <ProjectReference Include="..\Authentication.Domain\JumpIn.Authentication.Domain.csproj" />
   </ItemGroup>
 
 </Project>

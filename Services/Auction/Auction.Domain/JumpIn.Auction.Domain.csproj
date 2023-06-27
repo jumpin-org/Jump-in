@@ -15,13 +15,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\JumpIn.Common.Domain\JumpIn.Common.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="Migrations\Admin\" />
     <Folder Include="Migrations\Auction\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Common.Domain\JumpIn.Common.Domain.csproj" />
+    <ProjectReference Include="..\..\..\Common\Common.Utility\JumpIn.Common.Utility.csproj" />
   </ItemGroup>
 
 </Project>

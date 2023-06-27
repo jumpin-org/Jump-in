@@ -2,8 +2,8 @@
 using JumpIn.Auction.Domain.Models.Admin;
 using JumpIn.Auction.Domain.Models.Auction;
 using JumpIn.Common.Domain.BusinessLogicLayer;
-using JumpIn.Common.Domain.Helpers;
-using JumpIn.Common.Exceptions;
+using JumpIn.Common.Utility.Helpers;
+using JumpIn.Common.Utility.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 

@@ -1,7 +1,7 @@
 ﻿using JumpIn.Auction.Domain.Models.Auction;
 using JumpIn.Common.Domain.Enums;
-using JumpIn.Common.Domain.Helpers;
-using JumpIn.Common.Domain.Model;
+using JumpIn.Common.Utility.Helpers;
+using JumpIn.Common.Domain.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 

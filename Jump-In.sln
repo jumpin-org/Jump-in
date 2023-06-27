@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Admin.Test", "Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Admin.API", "Services\Admin\Admin.API\JumpIn.Admin.API.csproj", "{26D30DF4-FB25-490A-9E8C-7D6A124DD169}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Common.Domain", "Common\JumpIn.Common.Domain\JumpIn.Common.Domain.csproj", "{E277113C-18DE-492F-BD34-77D4294872D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Common.Domain", "Common\Common.Domain\JumpIn.Common.Domain.csproj", "{E277113C-18DE-492F-BD34-77D4294872D8}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{994DF2C5-DA2E-4D1E-8B3B-56624B886623}"
 EndProject
@@ -50,6 +50,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentication", "{BD8FAB5C-9720-457C-9ABA-4C315F7E010D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Authentication.API", "Services\Authentication\Authentication.API\JumpIn.Authentication.API.csproj", "{C1E87E20-DF40-431F-AEE6-9EFB096A167F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JumpIn.Authentication.Domain", "Services\Authentication\Authentication.Domain\JumpIn.Authentication.Domain.csproj", "{040B335B-D062-466E-AAB0-1B641A27594A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JumpIn.Common.Utility", "Common\Common.Utility\JumpIn.Common.Utility.csproj", "{8E8BE4C4-A4C3-4FE3-A2E8-FE1722EFC1FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,6 +113,14 @@ Global
 		{C1E87E20-DF40-431F-AEE6-9EFB096A167F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1E87E20-DF40-431F-AEE6-9EFB096A167F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1E87E20-DF40-431F-AEE6-9EFB096A167F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{040B335B-D062-466E-AAB0-1B641A27594A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{040B335B-D062-466E-AAB0-1B641A27594A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{040B335B-D062-466E-AAB0-1B641A27594A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{040B335B-D062-466E-AAB0-1B641A27594A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E8BE4C4-A4C3-4FE3-A2E8-FE1722EFC1FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E8BE4C4-A4C3-4FE3-A2E8-FE1722EFC1FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E8BE4C4-A4C3-4FE3-A2E8-FE1722EFC1FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E8BE4C4-A4C3-4FE3-A2E8-FE1722EFC1FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -130,6 +142,8 @@ Global
 		{C3E0EFBB-1D89-4395-90AE-3911AB857DAE} = {296A7C95-CB14-4769-B835-B24A00972010}
 		{BD8FAB5C-9720-457C-9ABA-4C315F7E010D} = {E35249BD-CD6B-4F0D-ABF4-145AB8EE4D36}
 		{C1E87E20-DF40-431F-AEE6-9EFB096A167F} = {BD8FAB5C-9720-457C-9ABA-4C315F7E010D}
+		{040B335B-D062-466E-AAB0-1B641A27594A} = {BD8FAB5C-9720-457C-9ABA-4C315F7E010D}
+		{8E8BE4C4-A4C3-4FE3-A2E8-FE1722EFC1FD} = {28DB8580-7E80-4CA6-A8B6-A53B0765D712}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CEA0185C-5C19-4B68-9B19-0963F9EB17FE}

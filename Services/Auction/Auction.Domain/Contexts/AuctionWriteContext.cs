@@ -1,5 +1,5 @@
-﻿using Common.Domain.Contexts;
-using JumpIn.Common.Domain.Model;
+﻿using JumpIn.Common.Domain.Contexts;
+using JumpIn.Common.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Design;

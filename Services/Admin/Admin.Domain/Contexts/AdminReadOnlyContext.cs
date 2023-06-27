@@ -1,4 +1,4 @@
-﻿using Common.Domain.Contexts;
+﻿using JumpIn.Common.Domain.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

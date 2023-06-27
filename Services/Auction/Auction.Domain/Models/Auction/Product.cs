@@ -1,4 +1,4 @@
-﻿using JumpIn.Common.Domain.Model;
+﻿using JumpIn.Common.Domain.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 

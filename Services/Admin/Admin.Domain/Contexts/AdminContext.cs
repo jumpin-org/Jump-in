@@ -1,6 +1,6 @@
-﻿using Common.Domain.Contexts;
-using JumpIn.Admin.Domain.Models.Admin;
+﻿using JumpIn.Common.Domain.Contexts;
 using JumpIn.Common.Domain.Constant;
+using JumpIn.Admin.Domain.Models.Admin;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

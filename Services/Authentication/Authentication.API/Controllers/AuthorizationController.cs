@@ -1,6 +1,6 @@
-using JumpIn.Authentication.API.Login;
-using JumpIn.Authentication.API.Models;
-using JumpIn.Authentication.API.Services;
+using JumpIn.Authentication.API.Dtos;
+using JumpIn.Authentication.Domain.CommandHandlers;
+using JumpIn.Authentication.Domain.Commands;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JumpIn.Authentication.API.Controllers
@@ -9,17 +9,12 @@ namespace JumpIn.Authentication.API.Controllers
     [Route("[controller]")]
     public class AuthorizationController : ControllerBase
     {
-        private readonly LoginCommandHandler loginCommandHandler;
-
-        public AuthorizationController(LoginCommandHandler loginCommandHandler)
-        {
-            this.loginCommandHandler = loginCommandHandler;
-        }
-
         [HttpPost("Login", Name = nameof(Login))]
-        public async Task<IActionResult> Login([FromBody] LoginRequest request)
+        public async Task<IActionResult> Login(
+            [FromServices] LoginCommandHandler handler, 
+            [FromBody] LoginRequestDto request)
         {
-            var loginResult = await loginCommandHandler.Handle(new LoginCommand(request.email, request.email));
+            var loginResult = await handler.Handle(new LoginCommand(request.email, request.email));
             return loginResult is null ? Unauthorized() : Ok(loginResult);
         }
     }

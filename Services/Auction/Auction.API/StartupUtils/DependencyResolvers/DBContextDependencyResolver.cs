@@ -1,4 +1,4 @@
-﻿using Common.Domain.Contexts;
+﻿using JumpIn.Common.Domain.Contexts;
 using JumpIn.Auction.Domain.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;

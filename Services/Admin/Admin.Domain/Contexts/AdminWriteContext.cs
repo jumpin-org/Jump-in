@@ -1,17 +1,11 @@
-﻿using Common.Domain.Contexts;
-using JumpIn.Common.Domain.Model;
+﻿using JumpIn.Common.Domain.Contexts;
+using JumpIn.Common.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JumpIn.Admin.Domain.Contexts
 {

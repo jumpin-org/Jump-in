@@ -2,7 +2,7 @@
 using JumpIn.Admin.BusinessLogicLayer.Commands;
 using JumpIn.Admin.BusinessLogicLayer.Dtos;
 using JumpIn.Admin.BusinessLogicLayer.QueryHandlers;
-using JumpIn.Common.Domain.Helpers;
+using JumpIn.Common.Utility.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 

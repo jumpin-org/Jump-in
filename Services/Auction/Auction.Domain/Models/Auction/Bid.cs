@@ -1,5 +1,5 @@
 ﻿using JumpIn.Common.Domain.Enums;
-using JumpIn.Common.Domain.Model;
+using JumpIn.Common.Domain.Models;
 
 namespace JumpIn.Auction.Domain.Models.Auction
 {

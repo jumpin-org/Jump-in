@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Admin.Domain\JumpIn.Admin.Domain.csproj" />
+    <Folder Include="Queries\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Queries\" />
+    <ProjectReference Include="..\Admin.Domain\JumpIn.Admin.Domain.csproj" />
   </ItemGroup>
 
 </Project>

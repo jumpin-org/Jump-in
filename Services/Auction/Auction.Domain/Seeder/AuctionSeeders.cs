@@ -3,7 +3,7 @@ using JumpIn.Auction.Domain.Models.Admin;
 using JumpIn.Auction.Domain.Models.Auction;
 using JumpIn.Common.Domain.Constant;
 using JumpIn.Common.Domain.Enums;
-using JumpIn.Common.Domain.Helpers;
+using JumpIn.Common.Utility.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

@@ -1,10 +1,10 @@
 ﻿using JumpIn.Common.Domain.BusinessLogicLayer;
 using JumpIn.Auction.BusinessLogicLayer.Commands;
 using Microsoft.Extensions.Logging;
-using JumpIn.Common.Domain.Helpers;
+using JumpIn.Common.Utility.Helpers;
 using JumpIn.Auction.Domain.Contexts;
 using JumpIn.Auction.Domain.Models.Admin;
-using JumpIn.Common.Exceptions;
+using JumpIn.Common.Utility.Exceptions;
 using System.Net;
 using JumpIn.Auction.Domain.Models.Auction;
 using JumpIn.Auction.BusinessLogicLayer.Dtos;
