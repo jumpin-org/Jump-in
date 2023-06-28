@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
 using JumpIn.Admin.API.StartupUtils.DependencyResolvers;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using JumpIn.Common.Utility.Helpers;
 
 namespace JumpIn.Admin.API
 {
@@ -19,7 +20,8 @@ namespace JumpIn.Admin.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDBContexts(Environment.GetEnvironmentVariable("DB_CONNECTION"));
+
+            services.AddDBContexts(DBConnectionHelper.GetConnectionString());
 
             services
                     .AddCommandHandlers()

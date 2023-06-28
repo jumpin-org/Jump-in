@@ -38,10 +38,10 @@ namespace JumpIn.Gateway.Utilities
                         }
                     }
 
-                    if (route.UpstreamPathTemplate is not "/auth")
-                    {
-                        route.AuthenticationOptions.AuthenticationProviderKey = "Bearer";
-                    }
+                    //if (route.UpstreamPathTemplate is not "/auth")
+                    //{
+                    //    route.AuthenticationOptions.AuthenticationProviderKey = "Bearer";
+                    //}
                 }
             });
 

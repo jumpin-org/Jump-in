@@ -1,12 +1,21 @@
 version: '3.4'
 
 services:
+  jumpin-dbserver:
+    environment:
+    - ACCEPT_EULA=Y
+    - PASSWORD=S3cur3P@ssW0rd!
   admin-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80 
       - ASPNETCORE_Kestrel__Certificates__Default__Password=Passw0rd123
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/jumpinapi.pfx
+      - DB_HOST=host.docker.internal
+      - DB_NAME=JumpInDev
+      - DB_USER_ID=SA
+      - DB_PASSWORD=S3cur3P@ssW0rd!
+      - DB_CERT=TrustServerCertificate=true
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${USERPROFILE}/.aspnet/https:/https:ro
@@ -16,6 +25,11 @@ services:
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_Kestrel__Certificates__Default__Password=Passw0rd123
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/jumpinapi.pfx
+      - DB_HOST=host.docker.internal
+      - DB_NAME=JumpInDev
+      - DB_USER_ID=SA
+      - DB_PASSWORD=S3cur3P@ssW0rd!
+      - DB_CERT=TrustServerCertificate=true
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${USERPROFILE}/.aspnet/https:/https:ro
@@ -25,6 +39,11 @@ services:
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_Kestrel__Certificates__Default__Password=Passw0rd123
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/jumpinapi.pfx
+      - DB_HOST=host.docker.internal
+      - DB_NAME=JumpInDev
+      - DB_USER_ID=SA
+      - DB_PASSWORD=S3cur3P@ssW0rd!
+      - DB_CERT=TrustServerCertificate=true
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${USERPROFILE}/.aspnet/https:/https:ro

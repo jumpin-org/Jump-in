@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Hosting.Internal;
 using Microsoft.Extensions.Logging;
+using JumpIn.Common.Utility.Helpers;
 
 namespace JumpIn.Auction.Domain.Contexts
 {
@@ -49,7 +50,7 @@ namespace JumpIn.Auction.Domain.Contexts
 
             if (!optionsBuilder.IsConfigured)
             {
-               optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("DB_CONNECTION"));
+               optionsBuilder.UseSqlServer(DBConnectionHelper.GetConnectionString());
             }
         }
 

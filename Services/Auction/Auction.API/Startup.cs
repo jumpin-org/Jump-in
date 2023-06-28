@@ -1,6 +1,7 @@
 ﻿using JumpIn.Auction.API.StartupUtils;
 using JumpIn.Auction.API.StartupUtils.DependencyResolvers;
 using JumpIn.Auction.Domain.Contexts;
+using JumpIn.Common.Utility.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,7 +19,7 @@ namespace JumpIn.Auction.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDBContexts(Environment.GetEnvironmentVariable("DB_CONNECTION"));
+            services.AddDBContexts(DBConnectionHelper.GetConnectionString());
 
             services
                 .AddCommandHandlers()

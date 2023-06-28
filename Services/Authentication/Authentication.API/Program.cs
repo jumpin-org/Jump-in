@@ -1,8 +1,9 @@
 using JumpIn.Authentication.API.StartupUtils.DependencyResolvers;
+using JumpIn.Common.Utility.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDBContexts(Environment.GetEnvironmentVariable("DB_CONNECTION"));
+builder.Services.AddDBContexts(DBConnectionHelper.GetConnectionString());
 
 builder.Services.AddCommandHandlers();
 

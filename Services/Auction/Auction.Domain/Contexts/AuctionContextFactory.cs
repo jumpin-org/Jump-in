@@ -1,4 +1,5 @@
 ﻿using JumpIn.Common.Domain.Constant;
+using JumpIn.Common.Utility.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
@@ -32,7 +33,7 @@ namespace JumpIn.Auction.Domain.Contexts
             var config = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile($"appsettings.{env.EnvironmentName}.json").Build();
 
             var optionsBuilder = new DbContextOptionsBuilder<AuctionContext>();
-            optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("DB_CONNECTION"));
+            optionsBuilder.UseSqlServer(DBConnectionHelper.GetConnectionString());
 
             return new AuctionContext(optionsBuilder.Options, config, env);
         }

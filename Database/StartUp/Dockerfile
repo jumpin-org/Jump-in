@@ -2,9 +2,6 @@
 
 FROM mcr.microsoft.com/mssql/server:2022-latest
 
-ENV ACCEPT_EULA=Y
-ENV SA_PASSWORD=S3cur3P@ssW0rd!
-
 COPY ./Database/StartUp /
 
 CMD /bin/bash ./entrypoint.sh
