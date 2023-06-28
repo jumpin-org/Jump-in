@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using JumpIn.Common.Utility.Helpers;
 
 namespace JumpIn.Authentication.Domain.Contexts
 {
@@ -30,7 +31,7 @@ namespace JumpIn.Authentication.Domain.Contexts
 
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionStrings__Default"));
+                optionsBuilder.UseSqlServer(DBConnectionHelper.GetConnectionString());
             }
         }
 

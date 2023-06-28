@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JumpIn.Common.Utility.Helpers;
 
 namespace JumpIn.Auction.Domain.Contexts
 {
@@ -51,7 +52,7 @@ namespace JumpIn.Auction.Domain.Contexts
 
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionStrings__Default"));
+                optionsBuilder.UseSqlServer(DBConnectionHelper.GetConnectionString());
             }
         }
 

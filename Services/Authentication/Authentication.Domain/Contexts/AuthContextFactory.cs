@@ -1,4 +1,5 @@
 ﻿using JumpIn.Common.Domain.Constant;
+using JumpIn.Common.Utility.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
@@ -32,7 +33,7 @@ namespace JumpIn.Authentication.Domain.Contexts
             var config = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile($"appsettings.{env.EnvironmentName}.json").Build();
 
             var optionsBuilder = new DbContextOptionsBuilder<AuthContext>();
-            optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionStrings__Default"));
+            optionsBuilder.UseSqlServer(DBConnectionHelper.GetConnectionString());
 
             return new AuthContext(optionsBuilder.Options, config, env);
         }
