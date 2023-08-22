@@ -17,7 +17,8 @@ namespace JumpIn.Auction.API.StartupUtils.DependencyResolvers
             services
                 .AddScoped<CreateBidderCommandHandler>()
                 .AddScoped<CreateBidCommandHandler>()
-                .AddScoped < CreateDutchAuctionCommandHandler>();
+                .AddScoped<CreateDutchAuctionCommandHandler>()
+                .AddScoped<StartDutchAuctionCommandHandler>();
             return services;
         }
     }
