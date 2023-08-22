@@ -12,7 +12,7 @@ namespace JumpIn.Gateway.Utilities
             {
                 foreach (var route in fileConfiguration.Routes)
                 {
-                    route.DownstreamScheme = "https";
+                    if (route.DownstreamScheme != "wss") route.DownstreamScheme = "https";
 
                     if (route.Key == "Admin")
                     {

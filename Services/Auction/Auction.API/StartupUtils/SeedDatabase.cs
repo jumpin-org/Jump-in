@@ -19,9 +19,9 @@ namespace JumpIn.Auction.API.StartupUtils
 
         public static void SeedData(BaseDbContext context)
         {
-            Console.WriteLine($"Applying Migrations {context.Database.ToString()}");
+            /*Console.WriteLine($"Applying Migrations {context.Database.ToString()}");
             context.Database.Migrate();
-            Console.WriteLine($"Migrations Applied {context.Database.ToString()}");
+            Console.WriteLine($"Migrations Applied {context.Database.ToString()}");*/
         }
     }
 }

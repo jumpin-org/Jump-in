@@ -14,12 +14,12 @@ namespace JumpIn.Auction.BusinessLogicLayer.Commands
             BidTime = bidTime;
         }
 
-        public int BidderId { get; set; }
+        public int BidderId { get; private set; }
 
-        public int DutchAuctionId { get; set; }
+        public int DutchAuctionId { get; private set; }
 
-        public decimal Amount { get; set; }
+        public decimal Amount { get; private set; }
 
-        public DateTime BidTime { get; set; }
+        public DateTime BidTime { get; private set; }
     }
 }

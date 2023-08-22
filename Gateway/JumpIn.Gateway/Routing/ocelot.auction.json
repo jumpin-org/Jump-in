@@ -77,6 +77,38 @@
         }
       ],
       "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    {
+      "Key": "Auction",
+      "SwaggerKey": "Auction",
+      "DownstreamPathTemplate": "/auction-hub/",
+      "DownstreamScheme": "wss",
+      "DownstreamHostAndPorts": [
+        {
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/auction-hub/",
+      "QoSOptions": {
+        "TimeoutValue": 320000
+      },
+      "Priority": 50
+    },
+    {
+      "Key": "Auction",
+      "SwaggerKey": "Auction",
+      "DownstreamPathTemplate": "/auction-hub/{path}",
+      "DownstreamScheme": "wss",
+      "DownstreamHostAndPorts": [
+        {
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/auction-hub/{path}",
+      "QoSOptions": {
+        "TimeoutValue": 320000
+      },
+      "Priority": 50
     }
   ]
 }

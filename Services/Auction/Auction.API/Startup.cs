@@ -1,9 +1,8 @@
-﻿using JumpIn.Auction.API.StartupUtils;
+﻿using JumpIn.Auction.API.Hubs;
+using JumpIn.Auction.API.StartupUtils;
 using JumpIn.Auction.API.StartupUtils.DependencyResolvers;
-using JumpIn.Auction.Domain.Contexts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Identity.Web;
 using Microsoft.OpenApi.Models;
 
 namespace JumpIn.Auction.API
@@ -18,6 +17,19 @@ namespace JumpIn.Auction.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                var webPortalOrigin = Configuration.GetValue<string>("AllowedOrigins:WebPortal") ?? "";
+                options.AddPolicy(name: "CorsPolicy",
+                                  policy =>
+                                  {
+                                      policy.WithOrigins(webPortalOrigin);
+                                      policy.AllowAnyHeader();
+                                      policy.AllowAnyMethod();
+                                      policy.AllowCredentials();
+                                  });
+            });
+
             services.AddDBContexts(Environment.GetEnvironmentVariable("DB_CONNECTION"));
 
             services
@@ -26,8 +38,8 @@ namespace JumpIn.Auction.API
 
             services.AddControllers();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
-            //.AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
 
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(c =>
@@ -35,9 +47,13 @@ namespace JumpIn.Auction.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Auction", Version = "v1" });
             });
 
+            services.AddSignalR();
+
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors("CorsPolicy");
+
             if (env.IsDevelopment())
             {
                 app.UseExceptionHandler(
@@ -67,6 +83,8 @@ namespace JumpIn.Auction.API
                 endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapHub<AuctionHub>("auction-hub");
             });
         }
     }

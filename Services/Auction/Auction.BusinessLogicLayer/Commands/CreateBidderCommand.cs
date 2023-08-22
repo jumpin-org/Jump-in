@@ -10,6 +10,6 @@ namespace JumpIn.Auction.BusinessLogicLayer.Commands
             AccountId = accountId;
         }
 
-        public int AccountId { get; set; }
+        public int AccountId { get; private set; }
     }
 }

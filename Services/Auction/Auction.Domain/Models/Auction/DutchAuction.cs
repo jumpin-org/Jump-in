@@ -27,6 +27,10 @@ namespace JumpIn.Auction.Domain.Models.Auction
 
         public DateTime EndDateTime { get; private set; }
 
+        public DateTime ManualStartDateTime { get; private set; }
+
+        public DateTime ManualEndDateTime { get; private set; }
+
         public AuctionStatus AuctionStatus { get; private set; }
 
         public Product Product { get; private set; }
@@ -67,6 +71,12 @@ namespace JumpIn.Auction.Domain.Models.Auction
         public void SetAdministrator(Administrator administrator)
         {
             Administrator = administrator;
+        }
+
+        public void UpdateAuctionStatus(AuctionStatus auctionStatus)
+        {
+            AuctionStatus = auctionStatus;
+            ManualStartDateTime = DateTime.Now;
         }
     }
 }

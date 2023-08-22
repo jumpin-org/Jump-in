@@ -19,6 +19,9 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${USERPROFILE}/.aspnet/https:/https:ro
+    ports:
+      - "8001:443"
+      - "8000:80"
   gateway:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

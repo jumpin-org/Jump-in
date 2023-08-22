@@ -8,6 +8,7 @@ namespace JumpIn.Auction.BusinessLogicLayer.Commands
 {
     public class CreateDutchAuctionCommand : ICommand<int>
     {
+
         public int AccountId { get; set; }
 
         public string Title { get; set; }
