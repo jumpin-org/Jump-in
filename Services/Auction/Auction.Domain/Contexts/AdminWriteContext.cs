@@ -109,7 +109,8 @@ namespace JumpIn.Auction.Domain.Contexts
             
             if (existingEntity is null)
             {
-                throw new Exception(); ;
+                logger.LogWarning($"No record with the ID [{id}] could be found.");
+                throw new Exception();
             }
 
             return existingEntity;
