@@ -38,12 +38,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Database", "Database\JumpIn.Database\JumpIn.Database.csproj", "{FBD8A9E3-4523-4F02-B9F4-F714F3DDFAB1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StartUp", "StartUp", "{5A1F9601-CFEE-4A23-A7F2-418F08C07342}"
-	ProjectSection(SolutionItems) = preProject
-		Database\StartUp\Dockerfile = Database\StartUp\Dockerfile
-		Database\StartUp\entrypoint.sh = Database\StartUp\entrypoint.sh
-		Database\StartUp\setup.sql = Database\StartUp\setup.sql
-		Database\StartUp\startupsqlcmd.sh = Database\StartUp\startupsqlcmd.sh
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumpIn.Gateway", "Gateway\Jumpin.Gateway\JumpIn.Gateway.csproj", "{C3E0EFBB-1D89-4395-90AE-3911AB857DAE}"
 EndProject
