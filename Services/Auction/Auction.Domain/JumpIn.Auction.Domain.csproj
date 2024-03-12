@@ -1,27 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
-  </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\JumpIn.Common.Domain\JumpIn.Common.Domain.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="Migrations\Admin\" />
     <Folder Include="Migrations\Auction\" />
   </ItemGroup>
-
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+  </ItemGroup>
 </Project>
