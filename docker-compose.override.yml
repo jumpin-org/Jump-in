@@ -5,8 +5,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80 
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=Passw0rd123
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/jumpinapi.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=jumpinapp
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/jumpinapp.pfx
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${USERPROFILE}/.aspnet/https:/https:ro
@@ -14,8 +14,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=Passw0rd123
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/jumpinapi.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=jumpinapp
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/jumpinapp.pfx
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${USERPROFILE}/.aspnet/https:/https:ro
@@ -24,8 +24,8 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTPS_PORT=7001
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=Passw0rd123
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/jumpinapi.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=jumpinapp
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/jumpinapp.pfx
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${USERPROFILE}/.aspnet/https:/https:ro
