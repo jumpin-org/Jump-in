@@ -51,6 +51,11 @@ namespace JumpIn.Auction.Domain.Contexts
             {
                optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("DB_CONNECTION"));
             }
+
+            if (env.IsDevelopment())
+            {
+                optionsBuilder.EnableSensitiveDataLogging();
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
